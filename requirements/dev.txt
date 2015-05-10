@@ -2,4 +2,4 @@ bpython==0.13
 tox
 yolk
 
--r requirements-test.txt
+-r test.txt
