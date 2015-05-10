@@ -13,7 +13,7 @@ Python library for working with settings of IL-2 FB Dedicated Server.
    :alt: Build status of the master branch on Mac/Linux
 
 .. |windows_build|  image:: https://ci.appveyor.com/api/projects/status/1nub4lcihi3e0968/branch/master?svg=true
-    :target: https://ci.appveyor.com/project/IL2HorusTeam/il2fb-ds-config
+    :target: https://ci.appveyor.com/project/oblalex/il2fb-ds-config
     :alt: Build status of the master branch on Windows
 
 .. |coverage_status| image:: https://codecov.io/github/IL2HorusTeam/il2fb-ds-config/coverage.svg?branch=master
