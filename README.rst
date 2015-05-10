@@ -8,11 +8,11 @@ Python library for working with settings of IL-2 FB Dedicated Server.
 |unix_build| |windows_build| |coverage_status| |Quality|
 
 
-.. |unix_build| image:: http://img.shields.io/travis/IL2HorusTeam/il2fb-ds-config.svg?style=flat&branch=master&label=unix%20build
+.. |unix_build| image:: http://img.shields.io/travis/IL2HorusTeam/il2fb-ds-config.svg?style=flat&branch=master
    :target: https://travis-ci.org/IL2HorusTeam/il2fb-ds-config
    :alt: Build status of the master branch on Mac/Linux
 
-.. |windows_build|  image:: https://img.shields.io/appveyor/ci/IL2HorusTeam/il2fb-ds-config.svg?style=flat-square&label=windows%20build
+.. |windows_build|  image:: https://ci.appveyor.com/api/projects/status/1nub4lcihi3e0968/branch/master?svg=true
     :target: https://ci.appveyor.com/project/IL2HorusTeam/il2fb-ds-config
     :alt: Build status of the master branch on Windows
 
