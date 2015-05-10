@@ -1,0 +1,19 @@
+os:
+  - 'linux'
+  - 'osx'
+language: python
+python:
+  - '2.6'
+  - '2.7'
+  - '3.3'
+  - '3.4'
+install:
+  - pip install -r ./requirements/travis.txt
+  - pip install --upgrade --editable .
+script:
+  - py.test --doctest-modules --verbose ./il2fb/ds/config ./tests --cov ./il2fb/ds/config ./tests
+after_success:
+  - codecov
+  - ocular --data-file ".coverage" --config-file ".coveragerc"
+notifications:
+  - email: false

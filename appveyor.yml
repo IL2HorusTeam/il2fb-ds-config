@@ -1,0 +1,17 @@
+# https://ci.appveyor.com/project/oblalex/il2fb-ds-config
+
+build: false # Not a C# project, build stuff at the test step instead.
+environment:
+  matrix:
+    - PYTHON: "C:/Python27"
+    - PYTHON: "C:/Python34"
+init:
+  - "ECHO %PYTHON%"
+  - ps: "ls C:/Python*"
+install:
+  - ps: (new-object net.webclient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'C:/get-pip.py')
+  - "%PYTHON%/python.exe C:/get-pip.py"
+  - "%PYTHON%/Scripts/pip.exe install -r ./requirements/travis.txt"
+  - "%PYTHON%/Scripts/pip.exe install --upgrade --editable ."
+test_script:
+  - "%PYTHON%/Scripts/py.test --doctest-modules --verbose ./il2fb/ds/config ./tests --cov ./il2fb/ds/config ./tests"
