@@ -5,7 +5,7 @@ Python library for working with settings of IL-2 FB Dedicated Server.
 
 |pypi_package| |pypi_downloads| |python_versions| |license|
 
-|unix_build| |windows_build| |coverage_status| |Quality|
+|unix_build| |windows_build| |coverage_status| |quality|
 
 
 .. |unix_build| image:: http://img.shields.io/travis/IL2HorusTeam/il2fb-ds-config.svg?style=flat&branch=master
@@ -20,7 +20,7 @@ Python library for working with settings of IL-2 FB Dedicated Server.
    :target: https://codecov.io/github/IL2HorusTeam/il2fb-ds-config?branch=master
    :alt: Test coverage
 
-.. |Quality| image:: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/badges/quality-score.png?b=master&style=flat
+.. |quality| image:: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/badges/quality-score.png?b=master&style=flat
    :target: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/?branch=master
    :alt: Code quality provided by Scrutinizer
 
@@ -32,7 +32,7 @@ Python library for working with settings of IL-2 FB Dedicated Server.
    :target: https://crate.io/packages/il2fb-ds-config/
    :alt: Number of downloads of PyPI package
 
-.. |python_versions| image:: https://img.shields.io/badge/Python-2.6,2.7,3.3,3.4-brightgreen.svg?style=flat
+.. |python_versions| image:: https://img.shields.io/badge/Python-2.7,3.4-brightgreen.svg?style=flat
    :alt: Supported versions of Python
 
 .. |license| image:: https://img.shields.io/badge/license-LGPLv3-blue.svg?style=flat
