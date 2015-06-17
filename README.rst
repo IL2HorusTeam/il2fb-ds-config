@@ -5,7 +5,7 @@ Python library for working with settings of IL-2 FB Dedicated Server.
 
 |pypi_package| |pypi_downloads| |python_versions| |license|
 
-|unix_build| |windows_build| |coverage_status| |quality|
+|unix_build| |windows_build| |coverage_status| |codacy| |quality| |health| |requirements|
 
 
 .. |unix_build| image:: http://img.shields.io/travis/IL2HorusTeam/il2fb-ds-config.svg?style=flat&branch=master
@@ -20,9 +20,21 @@ Python library for working with settings of IL-2 FB Dedicated Server.
    :target: https://codecov.io/github/IL2HorusTeam/il2fb-ds-config?branch=master
    :alt: Test coverage
 
+.. |codacy| image:: https://www.codacy.com/project/badge/6691993e3d5241ceb5341ec73c0aff70
+    :target: https://www.codacy.com/app/oblovatniy_3001/il2fb-ds-config
+    :alt: Codacy Code Review
+
 .. |quality| image:: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/badges/quality-score.png?b=master&style=flat
    :target: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/?branch=master
    :alt: Code quality provided by Scrutinizer
+
+.. |health| image:: https://landscape.io/github/IL2HorusTeam/il2fb-ds-config/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/IL2HorusTeam/il2fb-ds-config/master
+   :alt: Code Health
+
+.. |requirements| image:: https://requires.io/github/IL2HorusTeam/il2fb-ds-config/requirements.svg?branch=master
+     :target: https://requires.io/github/IL2HorusTeam/il2fb-ds-config/requirements/?branch=master
+     :alt: Requirements Status
 
 .. |pypi_package| image:: http://img.shields.io/pypi/v/il2fb-ds-config.svg?style=flat
    :target: http://badge.fury.io/py/il2fb-ds-config/
