@@ -21,7 +21,7 @@ Python library for working with settings of IL-2 FB Dedicated Server.
    :alt: Test coverage
 
 .. |codacy| image:: https://www.codacy.com/project/badge/6691993e3d5241ceb5341ec73c0aff70
-    :target: https://www.codacy.com/app/oblovatniy_3001/il2fb-ds-config
+    :target: https://www.codacy.com/app/oblalex/il2fb-ds-config
     :alt: Codacy Code Review
 
 .. |quality| image:: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/badges/quality-score.png?b=master&style=flat
