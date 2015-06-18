@@ -5,7 +5,9 @@ Python library for working with settings of IL-2 FB Dedicated Server.
 
 |pypi_package| |pypi_downloads| |python_versions| |license|
 
-|unix_build| |windows_build| |coverage_status| |codacy| |quality| |health| |requirements|
+|unix_build| |windows_build| |coverage_status|
+
+|codeclimate| |codacy| |quality| |health| |requirements|
 
 
 .. |unix_build| image:: http://img.shields.io/travis/IL2HorusTeam/il2fb-ds-config.svg?style=flat&branch=master
@@ -19,6 +21,10 @@ Python library for working with settings of IL-2 FB Dedicated Server.
 .. |coverage_status| image:: https://codecov.io/github/IL2HorusTeam/il2fb-ds-config/coverage.svg?branch=master
    :target: https://codecov.io/github/IL2HorusTeam/il2fb-ds-config?branch=master
    :alt: Test coverage
+
+.. |codeclimate| image:: https://codeclimate.com/github/IL2HorusTeam/il2fb-ds-config/badges/gpa.svg
+   :target: https://codeclimate.com/github/IL2HorusTeam/il2fb-ds-config
+   :alt: Code Climate
 
 .. |codacy| image:: https://www.codacy.com/project/badge/6691993e3d5241ceb5341ec73c0aff70
     :target: https://www.codacy.com/app/oblalex/il2fb-ds-config
