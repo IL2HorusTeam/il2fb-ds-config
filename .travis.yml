@@ -1,17 +1,20 @@
 os:
-  - 'linux'
-  - 'osx'
+  - linux
+sudo: false
 language: python
 python:
   - '2.7'
   - '3.4'
+  - '3.5'
 install:
-  - pip install -r ./requirements/travis.txt
-  - pip install --upgrade --editable .
+  - pip install -r ./requirements/ci.txt
+  - pip install -e .
 script:
-  - py.test --doctest-modules --verbose ./il2fb/ds/config ./tests --cov ./il2fb/ds/config ./tests
+  - py.test
 after_success:
   - codecov
   - ocular --data-file ".coverage" --config-file ".coveragerc"
 notifications:
-  - email: false
+  email: false
+  slack:
+    secure: v8pQer33B4u/OUQNrHmJyhJa5e7QHxgm9+X6u3K55yZtHwdM4IRyErJPD7xRw1Uoi1OEZ3oNlDfkh83DrczfLvPjvQIPWiRAkg8aYFSo8bUyNgVb+9cp5HijikUlmkiVRjsiQAKwZ24devK/iQEQcl355+XbUB3bsQyiXBP7BshV72+2XPuRft6dm+4rt/PUK54/2SREs16CihqZqtBp5LbEV8WqjScilIWT7zMbd7SRosuhxs1fzPem5+8JQ8NYlZwnz2KCAXHvjVmzsHRkIYhyi33ZP4uqGOZErZk+tYNKTgUs/2HwyQ1wv5eXMZLxfQMXrvQ/f5LjIcK6JO5YgsVDaLxgDOvmDbCt1TYs1XN5p7kAyzntxNHTe6+blOSwjfBzLGF+esV2N66ULIBs4JZw+HEVEcwPfSwcYL7CfoIKhl1MEzCfJR9fP7fH8u09hYooYtt1I1M9ag9IL3SZlEds3puaAXIQHclssu/45PUCgK0f2ZEcp3SAWbgMy6ZDB7T5Wgh4KLoUIdmCubs7XA/uAOvrJ+i5ci6YCUQLkKKV3GZymcxBG5MA5lzItXO6U9H170wsxFZzW9tk1hoPLOkb4jn5HvQgH69lutkBQYXMrpC+q8PDVJZuhAdn9KKouZlRw+X8Zcfl0zaz72pdys1hOPyvYg9pVPPduSmx0S0=

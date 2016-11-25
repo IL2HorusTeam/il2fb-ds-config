@@ -1,8 +1,7 @@
 [run]
-source = il2fb.ds.config
+source = il2fb/config/ds
 omit =
     */tests/*
-    il2fb/ds/config/version.py
 
 [report]
 exclude_lines =

@@ -1,4 +1,5 @@
+-r dist.txt
+-r test.txt
+
 codecov
 scrutinizer-ocular
-
--r test.txt

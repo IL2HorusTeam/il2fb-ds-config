@@ -1,4 +1,4 @@
-bpython==0.13
+bpython
 tox
 yolk
 
