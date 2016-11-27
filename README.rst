@@ -137,35 +137,42 @@ checkRuntime
    :Default: ``0``
    :Example: ``checkRuntime=2``
 
-checkServerTimeSpeed
-   Protection from speedhack at server side *(need more details)*.
-
-   :Type: ``boolean`` (0 — false, 1 — true)
-   :Default: ``1``
-   :Example: ``checkServerTimeSpeed=1``
-
-checkClientTimeSpeed
-   Protection from speedhack at client side *(need more details)*.
-
-   :Type: ``boolean`` (0 — false, 1 — true)
-   :Default: ``0``
-   :Example: ``checkClientTimeSpeed=0``
-
 checkTimeSpeedDifferense
-   Allowed difference between clocks of server and client *(need more details)*.
+   Max allowed difference in time between server and client (protection from
+   SpeedHack-like cheats). This may especially happen when the connection
+   quality is low and connectivity errors occur. This may also happen if the
+   hardware malfunctions, such as overheating of the computer timer causing
+   frequency changes.
 
    :Type: ``float``
-   :Default: ``0.2``
+   :Min: ``0.01`` (1%)
+   :Default: ``0.2`` (20%)
    :Example: ``checkTimeSpeedDifferense=0.2``
 
 checkTimeSpeedInterval
-   Interval of checks of clock differencies *(need more details)*.
+   Max allowed time period when time difference can exceed
+   ``checkTimeSpeedDifferense`` value. Client will be disconnected from the
+   server after this period.
 
    :Type: ``integer``
    :Min: ``1``
    :Max: ``1000``
    :Default: ``17``
    :Example: ``checkTimeSpeedInterval=17``
+
+checkServerTimeSpeed
+   Enable protection from SpeedHack-like cheats at server side.
+
+   :Type: ``boolean`` (0 — false, 1 — true)
+   :Default: ``1``
+   :Example: ``checkServerTimeSpeed=1``
+
+checkClientTimeSpeed
+   Enable protection from SpeedHack-like cheats at client side.
+
+   :Type: ``boolean`` (0 — false, 1 — true)
+   :Default: ``0``
+   :Example: ``checkClientTimeSpeed=0``
 
 difficulty
    Difficulty settings.
