@@ -537,12 +537,18 @@ autoLogDetail
 ``MaxLag`` section
 ~~~~~~~~~~~~~~~~~~
 
-Options for detecting cheaters and kicking them.
+This section is about ``Cheating has been detected!`` messages.
+
+It contains options which allow to limit the amount of lag acceptable by the
+host before a player will be autokicked.
+
+Settings to leanient will have no effect, while settings too strict will cause
+a lot of autokicking.
 
 nearMaxLagTime
-   Max allowed delay between network packets in situation when aircraft is
-   being attacked or poses a threat to an enemy. If delay exceeds specified
-   value, then server considers a user to be a cheater.
+   Defines the max lag time allowed for an aircraft in an endangered position
+   before it is considered warping (cheating). This is meant to address players
+   who are lagging on purpose.
 
    :Type: ``float``
    :Min: ``0.1``
@@ -551,8 +557,8 @@ nearMaxLagTime
    :Example: ``nearMaxLagTime=2``
 
 farMaxLagTime
-   Max allowed delay between network packets. If delay exceeds specified value,
-   then server considers a user to be a cheater.
+   Defines the maximum delay (in seconds) between packets received from a given
+   client. A time greater than this is considered a warp.
 
    :Type: ``float``
    :Min: value of ``nearMaxLagTime``
@@ -561,7 +567,9 @@ farMaxLagTime
    :Example: ``farMaxLagTime=10``
 
 cheaterWarningDelay
-   Delay between warning messages about detected cheating.
+   Defines the maximum amount of time the system will refrain from taking
+   action against a player acting out of bounds. This can be used to avoid
+   issuing multiple warnings for a single glitch.
 
    :Type: ``float``
    :Min: ``1.0``
@@ -570,10 +578,8 @@ cheaterWarningDelay
    :Example: ``cheaterWarningDelay=10``
 
 cheaterWarningNum
-   Number of warning messages about cheating, which are shown to a user, before
-   he will be kicked out server.
-
-   Value ``-1`` disables automatic kicks.
+   Defines the max number of warnings issued before a player is autokicked by
+   the host. A value of ``-1`` prevents autokicking.
 
    :Type: ``integer``
    :Default: ``3``
