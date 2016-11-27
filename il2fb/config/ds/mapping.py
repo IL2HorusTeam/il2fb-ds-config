@@ -6,7 +6,7 @@ OPTIONS_MAPPING = {
     'NET.serverDescription': 'about.description',
 
     'NET.serverChannels': 'connection.max_clients',
-    'NET.speed': 'qos.throughput',
+    'NET.speed': 'connection.throughput',
 
     'NET.localHost': 'connection.host',
     'NET.localPort': 'connection.port',
@@ -16,11 +16,11 @@ OPTIONS_MAPPING = {
     'NET.socksUser': 'connection.proxy.user',
     'NET.socksPwd': 'connection.proxy.password',
 
-    'NET.checkRuntime': 'other.compatibility_level',
-    'NET.checkServerTimeSpeed': 'qos.time_speed.check_server',
-    'NET.checkClientTimeSpeed': 'qos.time_speed.check_client',
-    'NET.checkTimeSpeedDifferense': 'qos.time_speed.allowed_differense',
-    'NET.checkTimeSpeedInterval': 'qos.time_speed.check_interval',
+    'NET.checkRuntime': 'anticheat.check_version_level',
+    'NET.checkServerTimeSpeed': 'anticheat.speedhack.check_server_time_speed',
+    'NET.checkClientTimeSpeed': 'anticheat.speedhack.check_client_time_speed',
+    'NET.checkTimeSpeedDifferense': 'anticheat.speedhack.max_time_differense',
+    'NET.checkTimeSpeedInterval': 'anticheat.speedhack.max_time_differense_period',
 
     'NET.difficulty': 'other.difficulty',
     'NET.SkinDownload': 'other.display_custom_skins',
@@ -71,8 +71,8 @@ OPTIONS_MAPPING = {
 
     'chat.autoLogDetail': 'events.chat_level',
 
-    'MaxLag.nearMaxLagTime': 'qos.lags.max_time.near',
-    'MaxLag.farMaxLagTime': 'qos.lags.max_time.far',
-    'MaxLag.cheaterWarningDelay': 'qos.lags.warnings.delay',
-    'MaxLag.cheaterWarningNum': 'qos.lags.warnings.max_number',
+    'MaxLag.nearMaxLagTime': 'anticheat.lags.max_time.near',
+    'MaxLag.farMaxLagTime': 'anticheat.lags.max_time.far',
+    'MaxLag.cheaterWarningDelay': 'anticheat.lags.warnings.delay',
+    'MaxLag.cheaterWarningNum': 'anticheat.lags.warnings.max_number',
 }
