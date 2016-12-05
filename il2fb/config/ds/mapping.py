@@ -16,11 +16,11 @@ OPTIONS_MAPPING = {
     'NET.socksUser': 'connection.proxy.user',
     'NET.socksPwd': 'connection.proxy.password',
 
-    'NET.checkRuntime': 'anticheat.check_version_level',
+    'NET.checkRuntime': 'anticheat.version_check_level',
     'NET.checkServerTimeSpeed': 'anticheat.speedhack.check_server_time_speed',
     'NET.checkClientTimeSpeed': 'anticheat.speedhack.check_client_time_speed',
-    'NET.checkTimeSpeedDifferense': 'anticheat.speedhack.max_time_differense',
-    'NET.checkTimeSpeedInterval': 'anticheat.speedhack.max_time_differense_period',
+    'NET.checkTimeSpeedDifferense': 'anticheat.speedhack.max_time_difference',
+    'NET.checkTimeSpeedInterval': 'anticheat.speedhack.max_time_difference_period',
 
     'NET.difficulty': 'other.difficulty',
     'NET.SkinDownload': 'other.display_custom_skins',
@@ -36,7 +36,7 @@ OPTIONS_MAPPING = {
     'NET.showPilotNumber': 'statistics.users.show_number',
     'NET.showPilotPing': 'statistics.users.show_ping',
     'NET.showPilotName': 'statistics.users.show_name',
-    'NET.showPilotArmy': 'statistics.users.show_army',
+    'NET.showPilotArmy': 'statistics.users.show_belligerent',
     'NET.showPilotACDesignation': 'statistics.users.show_aircraft_designation',
     'NET.showPilotACType': 'statistics.users.show_aircraft_type',
     'NET.showPilotScore': 'statistics.users.show_score',
@@ -46,7 +46,7 @@ OPTIONS_MAPPING = {
     'Console.IP': 'console.connection.port',
     'Console.IPS': 'console.connection.allowed_hosts',
     'Console.LOG': 'console.logging.is_enabled',
-    'Console.LOGFILE': 'console.logging.file',
+    'Console.LOGFILE': 'console.logging.file_name',
     'Console.LOGTIME': 'console.logging.log_time',
     'Console.LOGKEEP': 'console.logging.keep',
     'Console.HISTORY': 'console.history_size.records',
@@ -56,7 +56,7 @@ OPTIONS_MAPPING = {
     'DeviceLink.port': 'device_link.connection.port',
     'DeviceLink.IPS': 'device_link.connection.allowed_hosts',
 
-    'game.eventlog': 'events.logging.file',
+    'game.eventlog': 'events.logging.file_name',
     'game.eventlogkeep': 'events.logging.keep',
     'game.eventlogHouse': 'events.logging.log_buildings',
 
