@@ -1,7 +1,7 @@
 {
   "name": "il2fb-ds-config-editor",
   "version": "1.0.0",
-  "description": "IL-2 FB Server Config Editor and Demo page of 'il2fb-ds-config' Python library",
+  "description": "IL-2 FB server config editor and demo page of 'il2fb-ds-config' Python library",
   "keywords": [
     "il2",
     "il-2",
@@ -23,7 +23,8 @@
   "private": true,
   "dependencies": {
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "superagent": "^3.3.1"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",

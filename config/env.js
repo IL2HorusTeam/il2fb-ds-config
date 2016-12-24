@@ -20,7 +20,13 @@ function getClientEnvironment(publicUrl) {
       // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
       // This should only be used as an escape hatch. Normally you would put
       // images into the `src` and `import` them in code to get their paths.
-      'PUBLIC_URL': JSON.stringify(publicUrl)
+      'PUBLIC_URL': JSON.stringify(publicUrl),
+
+      'API_HOST': JSON.stringify(
+        process.env.NODE_ENV === 'development'
+        ? "http://127.0.0.1:5000"
+        : "https://il2fb-demo-services.herokuapp.com"
+      )
     });
   return {'process.env': processEnv};
 }
