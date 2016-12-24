@@ -1,11 +1,16 @@
 # coding: utf-8
 
+import zope.interface
+
 from schematics.exceptions import ValidationError
 from schematics.models import Model
 from schematics.types import IntType, FloatType
 from schematics.types.compound import ModelType
 
+from ..interfaces import INISerializable
 
+
+@zope.interface.implementer(INISerializable)
 class MaxTime(Model):
     near = FloatType(
         min_value=0.1,
@@ -31,7 +36,21 @@ class MaxTime(Model):
 
         return value
 
+    @classmethod
+    def from_ini(cls, ini):
+        return cls({
+            'near': ini.getfloat(
+                'MaxLag', 'nearMaxLagTime',
+                fallback=cls.near.default,
+            ),
+            'far': ini.getfloat(
+                'MaxLag', 'farMaxLagTime',
+                fallback=cls.far.default,
+            ),
+        })
 
+
+@zope.interface.implementer(INISerializable)
 class Warnings(Model):
     delay = FloatType(
         min_value=1.0,
@@ -44,7 +63,21 @@ class Warnings(Model):
         required=True,
     )
 
+    @classmethod
+    def from_ini(cls, ini):
+        return cls({
+            'delay': ini.getfloat(
+                'MaxLag', 'cheaterWarningDelay',
+                fallback=cls.delay.default,
+            ),
+            'max_number': ini.getint(
+                'MaxLag', 'cheaterWarningNum',
+                fallback=cls.max_number.default,
+            ),
+        })
 
+
+@zope.interface.implementer(INISerializable)
 class Lags(Model):
     max_time = ModelType(
         model_spec=MaxTime,
@@ -54,3 +87,10 @@ class Lags(Model):
         model_spec=Warnings,
         required=True,
     )
+
+    @classmethod
+    def from_ini(cls, ini):
+        return cls({
+            'max_time': MaxTime.from_ini(ini),
+            'warnings': Warnings.from_ini(ini),
+        })
