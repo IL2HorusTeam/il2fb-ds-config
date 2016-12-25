@@ -49,6 +49,8 @@ setup(
     ],
     packages=[
         'il2fb.config.ds',
+        'il2fb.config.ds.schemas',
+        'il2fb.config.ds.schemas.anticheat',
     ],
     include_package_data=False,
     zip_safe=False,
