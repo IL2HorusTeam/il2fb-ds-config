@@ -7,11 +7,12 @@ from schematics.models import Model
 from schematics.types import IntType, FloatType
 from schematics.types.compound import ModelType
 
-from ..interfaces import INISerializable
+from ..interfaces import INISerializable, DefaultProvider
 from ..helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class MaxTime(Model):
     near = FloatType(
         min_value=0.1,
@@ -50,8 +51,16 @@ class MaxTime(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Warnings(Model):
     delay = FloatType(
         min_value=1.0,
@@ -77,8 +86,16 @@ class Warnings(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Lags(Model):
     max_time = ModelType(
         model_spec=MaxTime,
@@ -94,4 +111,11 @@ class Lags(Model):
         return cls({
             'max_time': MaxTime.from_ini(ini),
             'warnings': Warnings.from_ini(ini),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            'max_time': MaxTime.default(),
+            'warnings': Warnings.default(),
         })

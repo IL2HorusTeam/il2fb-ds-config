@@ -6,11 +6,12 @@ from schematics.models import Model
 from schematics.types import StringType, IntType, BooleanType
 from schematics.types.compound import ListType, ModelType
 
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Connection(Model):
     port = IntType(
         min_value=0,
@@ -41,8 +42,16 @@ class Connection(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            'port': cls.port.default,
+            'allowed_hosts': [],
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Logging(Model):
     is_enabled = BooleanType(
         default=False,
@@ -83,8 +92,16 @@ class Logging(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class HistorySize(Model):
     commands = IntType(
         min_value=0,
@@ -112,8 +129,16 @@ class HistorySize(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Console(Model):
     connection = ModelType(
         model_spec=Connection,
@@ -134,4 +159,12 @@ class Console(Model):
             'connection': Connection.from_ini(ini),
             'logging': Logging.from_ini(ini),
             'history_size': HistorySize.from_ini(ini),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            'connection': Connection.default(),
+            'logging': Logging.default(),
+            'history_size': HistorySize.default(),
         })

@@ -6,11 +6,12 @@ from schematics.models import Model
 from schematics.types import StringType, IntType
 from schematics.types.compound import ListType, ModelType
 
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Connection(Model):
     host = StringType(
         default="",
@@ -49,8 +50,17 @@ class Connection(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            'host': cls.host.default,
+            'port': cls.port.default,
+            'allowed_hosts': [],
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class DeviceLink(Model):
     connection = ModelType(
         model_spec=Connection,
@@ -61,4 +71,10 @@ class DeviceLink(Model):
     def from_ini(cls, ini):
         return cls({
             'connection': Connection.from_ini(ini),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            'connection': Connection.default(),
         })

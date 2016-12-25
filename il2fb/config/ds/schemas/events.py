@@ -6,11 +6,12 @@ from schematics.models import Model
 from schematics.types import StringType, IntType, BooleanType
 from schematics.types.compound import ModelType
 
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Logging(Model):
     file_name = StringType(
         default="eventlog.lst",
@@ -43,8 +44,16 @@ class Logging(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Events(Model):
     chat_level = IntType(
         min_value=0,
@@ -65,4 +74,11 @@ class Events(Model):
                 'chat', 'autoLogDetail',
             ),
             'logging': Logging.from_ini(ini),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            'chat_level': cls.chat_level.default,
+            'logging': Logging.default(),
         })

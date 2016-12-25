@@ -12,7 +12,7 @@ from .console import Console
 from .device_link import DeviceLink
 from .events import Events
 from .hud import HUD
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .morse import Morse
 from .other import Other
 from .refly import Refly
@@ -20,6 +20,7 @@ from .statistics import Statistics
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class ServerConfig(Model):
     about = ModelType(
         model_spec=About,
@@ -70,5 +71,12 @@ class ServerConfig(Model):
     def from_ini(cls, ini):
         return cls({
             field_name: model_type.model_class.from_ini(ini)
+            for field_name, model_type in cls.fields.items()
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: model_type.model_class.default()
             for field_name, model_type in cls.fields.items()
         })

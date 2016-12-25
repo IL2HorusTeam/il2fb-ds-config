@@ -5,11 +5,12 @@ import zope.interface
 from schematics.models import Model
 from schematics.types import StringType
 
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class About(Model):
     name = StringType(
         default="",
@@ -31,4 +32,11 @@ class About(Model):
                 cls.description, ini,
                 'NET', 'serverDescription',
             ),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
         })

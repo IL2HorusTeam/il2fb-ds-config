@@ -6,13 +6,14 @@ from schematics.models import Model
 from schematics.types import IntType
 from schematics.types.compound import ModelType
 
-from ..interfaces import INISerializable
+from ..interfaces import INISerializable, DefaultProvider
 from ..helpers import field_from_ini
 from .lags import Lags
 from .speedhack import Speedhack
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Anticheat(Model):
     version_check_level = IntType(
         min_value=0,
@@ -38,4 +39,12 @@ class Anticheat(Model):
             ),
             'lags': Lags.from_ini(ini),
             'speedhack': Speedhack.from_ini(ini),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            'version_check_level': cls.version_check_level.default,
+            'lags': Lags.default(),
+            'speedhack': Speedhack.default(),
         })

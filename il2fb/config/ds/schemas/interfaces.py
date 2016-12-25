@@ -10,3 +10,12 @@ class INISerializable(zope.interface.Interface):
         Get object from a given INI config.
 
         """
+
+
+class DefaultProvider(zope.interface.Interface):
+
+    def default(ini):
+        """
+        Get object with default values.
+
+        """

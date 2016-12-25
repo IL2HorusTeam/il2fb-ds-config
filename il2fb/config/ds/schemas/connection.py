@@ -6,11 +6,12 @@ from schematics.models import Model
 from schematics.types import StringType, IntType
 from schematics.types.compound import ModelType
 
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Proxy(Model):
     host = StringType(
         default="",
@@ -50,8 +51,16 @@ class Proxy(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Connection(Model):
     host = StringType(
         default="",
@@ -100,4 +109,14 @@ class Connection(Model):
                 'NET', 'speed',
             ),
             'proxy': Proxy.from_ini(ini),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            'host': cls.host.default,
+            'port': cls.port.default,
+            'max_clients': cls.max_clients.default,
+            'throughput': cls.throughput.default,
+            'proxy': Proxy.default(),
         })

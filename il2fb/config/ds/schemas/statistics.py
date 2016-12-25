@@ -6,11 +6,12 @@ from schematics.models import Model
 from schematics.types import BooleanType
 from schematics.types.compound import ModelType
 
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Users(Model):
     show_number = BooleanType(
         default=True,
@@ -74,8 +75,16 @@ class Users(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Belligerents(Model):
     show_score = BooleanType(
         default=False,
@@ -99,8 +108,16 @@ class Belligerents(Model):
             ),
         })
 
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
+        })
+
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Statistics(Model):
     is_disabled = BooleanType(
         default=False,
@@ -124,4 +141,12 @@ class Statistics(Model):
             ),
             'users': Users.from_ini(ini),
             'belligerents': Belligerents.from_ini(ini),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            'is_disabled': cls.is_disabled.default,
+            'users': Users.default(),
+            'belligerents': Belligerents.default(),
         })

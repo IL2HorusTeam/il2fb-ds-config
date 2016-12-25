@@ -5,11 +5,12 @@ import zope.interface
 from schematics.models import Model
 from schematics.types import BooleanType, IntType
 
-from .interfaces import INISerializable
+from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
+@zope.interface.implementer(DefaultProvider)
 class Other(Model):
     difficulty = IntType(
         min_value=0,
@@ -72,4 +73,11 @@ class Other(Model):
                 cls.new_clouds, ini,
                 'game', 'TypeClouds',
             ),
+        })
+
+    @classmethod
+    def default(cls):
+        return cls({
+            field_name: field.default
+            for field_name, field in cls.fields.items()
         })
