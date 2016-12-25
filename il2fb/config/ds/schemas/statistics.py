@@ -7,6 +7,7 @@ from schematics.types import BooleanType
 from schematics.types.compound import ModelType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -43,33 +44,33 @@ class Users(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'show_number': ini.getboolean(
+            'show_number': field_from_ini(
+                cls.show_number, ini,
                 'NET', 'showPilotNumber',
-                fallback=cls.show_number.default,
             ),
-            'show_ping': ini.getboolean(
+            'show_ping': field_from_ini(
+                cls.show_ping, ini,
                 'NET', 'showPilotPing',
-                fallback=cls.show_ping.default,
             ),
-            'show_name': ini.getboolean(
+            'show_name': field_from_ini(
+                cls.show_name, ini,
                 'NET', 'showPilotName',
-                fallback=cls.show_name.default,
             ),
-            'show_belligerent': ini.getboolean(
+            'show_belligerent': field_from_ini(
+                cls.show_belligerent, ini,
                 'NET', 'showPilotArmy',
-                fallback=cls.show_belligerent.default,
             ),
-            'show_aircraft_designation': ini.getboolean(
+            'show_aircraft_designation': field_from_ini(
+                cls.show_aircraft_designation, ini,
                 'NET', 'showPilotACDesignation',
-                fallback=cls.show_aircraft_designation.default,
             ),
-            'show_aircraft_type': ini.getboolean(
+            'show_aircraft_type': field_from_ini(
+                cls.show_aircraft_type, ini,
                 'NET', 'showPilotACType',
-                fallback=cls.show_aircraft_type.default,
             ),
-            'show_score': ini.getboolean(
+            'show_score': field_from_ini(
+                cls.show_score, ini,
                 'NET', 'showPilotScore',
-                fallback=cls.show_score.default,
             ),
         })
 
@@ -88,13 +89,13 @@ class Belligerents(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'show_score': ini.getboolean(
+            'show_score': field_from_ini(
+                cls.show_score, ini,
                 'NET', 'showTeamScore',
-                fallback=cls.show_score.default,
             ),
-            'accumulate_score': ini.getboolean(
+            'accumulate_score': field_from_ini(
+                cls.accumulate_score, ini,
                 'NET', 'cumulativeTeamScore',
-                fallback=cls.accumulate_score.default,
             ),
         })
 
@@ -117,9 +118,9 @@ class Statistics(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'is_disabled': ini.getboolean(
+            'is_disabled': field_from_ini(
+                cls.is_disabled, ini,
                 'NET', 'disableNetStatStatistics',
-                fallback=cls.is_disabled.default,
             ),
             'users': Users.from_ini(ini),
             'belligerents': Belligerents.from_ini(ini),

@@ -6,6 +6,7 @@ from schematics.models import Model
 from schematics.types import BooleanType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -26,16 +27,16 @@ class Morse(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'allow_morse_as_text': ini.getboolean(
+            'allow_morse_as_text': field_from_ini(
+                cls.allow_morse_as_text, ini,
                 'NET', 'allowMorseAsText',
-                fallback=cls.allow_morse_as_text.default,
             ),
-            'show_morse_as_text': ini.getboolean(
+            'show_morse_as_text': field_from_ini(
+                cls.show_morse_as_text, ini,
                 'game', 'ShowMorseAsText',
-                fallback=cls.show_morse_as_text.default,
             ),
-            'block_morse_chat': ini.getboolean(
+            'block_morse_chat': field_from_ini(
+                cls.block_morse_chat, ini,
                 'game', 'BlockMorseChat',
-                fallback=cls.block_morse_chat.default,
             ),
         })

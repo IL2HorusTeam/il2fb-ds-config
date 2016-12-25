@@ -6,6 +6,7 @@ from schematics.models import Model
 from schematics.types import BooleanType, IntType, FloatType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -33,20 +34,20 @@ class Refly(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'is_disabled': ini.getboolean(
+            'is_disabled': field_from_ini(
+                cls.is_disabled, ini,
                 'NET', 'reflyDisabled',
-                fallback=cls.is_disabled.default,
             ),
-            'kia_delay': ini.getint(
+            'kia_delay': field_from_ini(
+                cls.kia_delay, ini,
                 'NET', 'reflyKIADelay',
-                fallback=cls.kia_delay.default,
             ),
-            'kia_delay_multiplier': ini.getfloat(
+            'kia_delay_multiplier': field_from_ini(
+                cls.kia_delay_multiplier, ini,
                 'NET', 'reflyKIADelayMultiplier',
-                fallback=cls.kia_delay_multiplier.default,
             ),
-            'max_kia': ini.getint(
+            'max_kia': field_from_ini(
+                cls.max_kia, ini,
                 'NET', 'maxAllowedKIA',
-                fallback=cls.max_kia.default,
             ),
         })

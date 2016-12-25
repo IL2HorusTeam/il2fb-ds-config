@@ -5,7 +5,6 @@ import zope.interface
 from schematics.models import Model
 from schematics.types.compound import ModelType
 
-from .interfaces import INISerializable
 from .about import About
 from .anticheat import Anticheat
 from .connection import Connection
@@ -13,6 +12,7 @@ from .console import Console
 from .device_link import DeviceLink
 from .events import Events
 from .hud import HUD
+from .interfaces import INISerializable
 from .morse import Morse
 from .other import Other
 from .refly import Refly

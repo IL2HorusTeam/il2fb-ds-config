@@ -7,6 +7,7 @@ from schematics.types import StringType, IntType, BooleanType
 from schematics.types.compound import ModelType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -28,17 +29,17 @@ class Logging(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'file_name': ini.get(
+            'file_name': field_from_ini(
+                cls.file_name, ini,
                 'game', 'eventlog',
-                fallback=cls.file_name.default,
             ),
-            'keep': ini.getboolean(
+            'keep': field_from_ini(
+                cls.keep, ini,
                 'game', 'eventlogkeep',
-                fallback=cls.keep.default,
             ),
-            'log_buildings': ini.getboolean(
+            'log_buildings': field_from_ini(
+                cls.log_buildings, ini,
                 'game', 'eventlogHouse',
-                fallback=cls.log_buildings.default,
             ),
         })
 
@@ -59,9 +60,9 @@ class Events(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'chat_level': ini.getint(
+            'chat_level': field_from_ini(
+                cls.chat_level, ini,
                 'chat', 'autoLogDetail',
-                fallback=cls.chat_level.default,
             ),
             'logging': Logging.from_ini(ini),
         })

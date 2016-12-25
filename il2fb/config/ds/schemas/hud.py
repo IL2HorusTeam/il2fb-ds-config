@@ -6,6 +6,7 @@ from schematics.models import Model
 from schematics.types import BooleanType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -26,16 +27,16 @@ class HUD(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'no_mission_info': ini.getboolean(
+            'no_mission_info': field_from_ini(
+                cls.no_mission_info, ini,
                 'game', 'NoMissionInfoHud',
-                fallback=cls.no_mission_info.default,
             ),
-            'no_kill_info': ini.getboolean(
+            'no_kill_info': field_from_ini(
+                cls.no_kill_info, ini,
                 'game', 'noKillInfoHud',
-                fallback=cls.no_kill_info.default,
             ),
-            'display_at_bottom': ini.getboolean(
+            'display_at_bottom': field_from_ini(
+                cls.display_at_bottom, ini,
                 'game', 'lowInfoHud',
-                fallback=cls.display_at_bottom.default,
             ),
         })

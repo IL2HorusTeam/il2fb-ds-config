@@ -6,6 +6,7 @@ from schematics.models import Model
 from schematics.types import BooleanType, IntType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -43,32 +44,32 @@ class Other(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'difficulty': ini.getint(
+            'difficulty': field_from_ini(
+                cls.difficulty, ini,
                 'NET', 'difficulty',
-                fallback=cls.difficulty.default,
             ),
-            'display_custom_skins': ini.getboolean(
+            'display_custom_skins': field_from_ini(
+                cls.display_custom_skins, ini,
                 'NET', 'SkinDownload',
-                fallback=cls.display_custom_skins.default,
             ),
-            'allow_custom_sounds': ini.getboolean(
+            'allow_custom_sounds': field_from_ini(
+                cls.allow_custom_sounds, ini,
                 'NET', 'allowCustomSounds',
-                fallback=cls.allow_custom_sounds.default,
             ),
-            'filter_user_names': ini.getboolean(
+            'filter_user_names': field_from_ini(
+                cls.filter_user_names, ini,
                 'NET', 'filterUserNames',
-                fallback=cls.filter_user_names.default,
             ),
-            'small_way_point_labels': ini.getboolean(
+            'small_way_point_labels': field_from_ini(
+                cls.small_way_point_labels, ini,
                 'game', 'SmallMapWPLabels',
-                fallback=cls.small_way_point_labels.default,
             ),
-            'skip_paratrooper_views': ini.getboolean(
+            'skip_paratrooper_views': field_from_ini(
+                cls.skip_paratrooper_views, ini,
                 'game', 'SkipParatrooperViews',
-                fallback=cls.skip_paratrooper_views.default,
             ),
-            'new_clouds': ini.getboolean(
+            'new_clouds': field_from_ini(
+                cls.new_clouds, ini,
                 'game', 'TypeClouds',
-                fallback=cls.new_clouds.default,
             ),
         })

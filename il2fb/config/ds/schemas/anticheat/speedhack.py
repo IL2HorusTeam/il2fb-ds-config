@@ -3,9 +3,10 @@
 import zope.interface
 
 from schematics.models import Model
-from schematics.types import IntType, FloatType, BooleanType
+from schematics.types import FloatType, BooleanType
 
 from ..interfaces import INISerializable
+from ..helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -33,20 +34,20 @@ class Speedhack(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'check_server_time_speed': ini.getboolean(
+            'check_server_time_speed': field_from_ini(
+                cls.check_server_time_speed, ini,
                 'NET', 'checkServerTimeSpeed',
-                fallback=cls.check_server_time_speed.default,
             ),
-            'check_client_time_speed': ini.getboolean(
+            'check_client_time_speed': field_from_ini(
+                cls.check_client_time_speed, ini,
                 'NET', 'checkClientTimeSpeed',
-                fallback=cls.check_client_time_speed.default,
             ),
-            'max_time_difference': ini.getfloat(
+            'max_time_difference': field_from_ini(
+                cls.max_time_difference, ini,
                 'NET', 'checkTimeSpeedDifferense',
-                fallback=cls.max_time_difference.default,
             ),
-            'max_time_difference_period': ini.getfloat(
+            'max_time_difference_period': field_from_ini(
+                cls.max_time_difference_period, ini,
                 'NET', 'checkTimeSpeedInterval',
-                fallback=cls.max_time_difference_period.default,
             ),
         })

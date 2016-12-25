@@ -8,6 +8,7 @@ from schematics.types import IntType, FloatType
 from schematics.types.compound import ModelType
 
 from ..interfaces import INISerializable
+from ..helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -39,13 +40,13 @@ class MaxTime(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'near': ini.getfloat(
+            'near': field_from_ini(
+                cls.near, ini,
                 'MaxLag', 'nearMaxLagTime',
-                fallback=cls.near.default,
             ),
-            'far': ini.getfloat(
+            'far': field_from_ini(
+                cls.far, ini,
                 'MaxLag', 'farMaxLagTime',
-                fallback=cls.far.default,
             ),
         })
 
@@ -66,13 +67,13 @@ class Warnings(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'delay': ini.getfloat(
+            'delay': field_from_ini(
+                cls.delay, ini,
                 'MaxLag', 'cheaterWarningDelay',
-                fallback=cls.delay.default,
             ),
-            'max_number': ini.getint(
+            'max_number': field_from_ini(
+                cls.max_number, ini,
                 'MaxLag', 'cheaterWarningNum',
-                fallback=cls.max_number.default,
             ),
         })
 

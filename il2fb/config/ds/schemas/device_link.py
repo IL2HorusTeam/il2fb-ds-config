@@ -7,6 +7,7 @@ from schematics.types import StringType, IntType
 from schematics.types.compound import ListType, ModelType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -31,23 +32,21 @@ class Connection(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'host': ini.get(
+            'host': field_from_ini(
+                cls.host, ini,
                 'DeviceLink', 'host',
-                fallback=cls.host.default,
             ),
-            'port': ini.getint(
+            'port': field_from_ini(
+                cls.port, ini,
                 'DeviceLink', 'port',
-                fallback=cls.port.default,
             ),
-            'allowed_hosts': [
-                x.strip()
-                for x in
-                (
-                    ini
-                    .get('DeviceLink', 'IPS', fallback="")
-                    .split()
+            'allowed_hosts': (
+                field_from_ini(
+                    cls.allowed_hosts, ini,
+                    'DeviceLink', 'IPS', default="",
                 )
-            ],
+                .split()
+            ),
         })
 
 

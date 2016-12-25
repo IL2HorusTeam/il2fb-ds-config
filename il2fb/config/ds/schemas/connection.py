@@ -7,6 +7,7 @@ from schematics.types import StringType, IntType
 from schematics.types.compound import ModelType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -31,21 +32,21 @@ class Proxy(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'host': ini.get(
+            'host': field_from_ini(
+                cls.host, ini,
                 'NET', 'socksHost',
-                fallback=cls.host.default,
             ),
-            'port': ini.getint(
+            'port': field_from_ini(
+                cls.port, ini,
                 'NET', 'socksPort',
-                fallback=cls.port.default,
             ),
-            'user': ini.get(
+            'user': field_from_ini(
+                cls.user, ini,
                 'NET', 'socksUser',
-                fallback=cls.user.default,
             ),
-            'password': ini.get(
+            'password': field_from_ini(
+                cls.password, ini,
                 'NET', 'socksPwd',
-                fallback=cls.password.default,
             ),
         })
 
@@ -82,21 +83,21 @@ class Connection(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'host': ini.get(
+            'host': field_from_ini(
+                cls.host, ini,
                 'NET', 'localHost',
-                fallback=cls.host.default,
             ),
-            'port': ini.getint(
+            'port': field_from_ini(
+                cls.port, ini,
                 'NET', 'localPort',
-                fallback=cls.port.default,
             ),
-            'max_clients': ini.getint(
+            'max_clients': field_from_ini(
+                cls.max_clients, ini,
                 'NET', 'serverChannels',
-                fallback=cls.max_clients.default,
             ),
-            'throughput': ini.getint(
+            'throughput': field_from_ini(
+                cls.throughput, ini,
                 'NET', 'speed',
-                fallback=cls.throughput.default,
             ),
             'proxy': Proxy.from_ini(ini),
         })

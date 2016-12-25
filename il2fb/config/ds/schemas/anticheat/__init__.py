@@ -7,6 +7,7 @@ from schematics.types import IntType
 from schematics.types.compound import ModelType
 
 from ..interfaces import INISerializable
+from ..helpers import field_from_ini
 from .lags import Lags
 from .speedhack import Speedhack
 
@@ -31,9 +32,9 @@ class Anticheat(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'version_check_level': ini.getint(
+            'version_check_level': field_from_ini(
+                cls.version_check_level, ini,
                 'NET', 'checkRuntime',
-                fallback=cls.version_check_level.default,
             ),
             'lags': Lags.from_ini(ini),
             'speedhack': Speedhack.from_ini(ini),

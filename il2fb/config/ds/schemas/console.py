@@ -7,6 +7,7 @@ from schematics.types import StringType, IntType, BooleanType
 from schematics.types.compound import ListType, ModelType
 
 from .interfaces import INISerializable
+from .helpers import field_from_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -27,19 +28,17 @@ class Connection(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'port': ini.getint(
+            'port': field_from_ini(
+                cls.port, ini,
                 'Console', 'IP',
-                fallback=cls.port.default,
             ),
-            'allowed_hosts': [
-                x.strip()
-                for x in
-                (
-                    ini
-                    .get('Console', 'IPS', fallback="")
-                    .split()
+            'allowed_hosts': (
+                field_from_ini(
+                    cls.allowed_hosts, ini,
+                    'Console', 'IPS', default="",
                 )
-            ],
+                .split()
+            ),
         })
 
 
@@ -66,21 +65,21 @@ class Logging(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'is_enabled': ini.getboolean(
+            'is_enabled': field_from_ini(
+                cls.is_enabled, ini,
                 'Console', 'LOG',
-                fallback=cls.is_enabled.default,
             ),
-            'file_name': ini.get(
+            'file_name': field_from_ini(
+                cls.file_name, ini,
                 'Console', 'LOGFILE',
-                fallback=cls.file_name.default,
             ),
-            'log_time': ini.getboolean(
+            'log_time': field_from_ini(
+                cls.log_time, ini,
                 'Console', 'LOGTIME',
-                fallback=cls.log_time.default,
             ),
-            'keep': ini.getboolean(
+            'keep': field_from_ini(
+                cls.keep, ini,
                 'Console', 'LOGKEEP',
-                fallback=cls.keep.default,
             ),
         })
 
@@ -103,13 +102,13 @@ class HistorySize(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'commands': ini.getint(
+            'commands': field_from_ini(
+                cls.commands, ini,
                 'Console', 'HISTORYCMD',
-                fallback=cls.commands.default,
             ),
-            'records': ini.getint(
+            'records': field_from_ini(
+                cls.records, ini,
                 'Console', 'HISTORY',
-                fallback=cls.records.default,
             ),
         })
 
