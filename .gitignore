@@ -1,5 +1,63 @@
-/node_modules
-/npm-debug.log
-/build
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+env/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+nosetests.xml
+coverage.xml
+coverage/
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Logs:
+*.log
+
+# L10N
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# Caches
+.cache
+.sass-cache
+
+# System
 .DS_Store
-/coverage
+
+# UI
+node_modules/
+/npm-debug.log
