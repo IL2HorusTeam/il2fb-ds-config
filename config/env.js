@@ -25,7 +25,7 @@ function getClientEnvironment(publicUrl) {
       'API_HOST': JSON.stringify(
         process.env.NODE_ENV === 'development'
         ? "http://127.0.0.1:5000"
-        : "https://il2.api.oblalex.space"
+        : "https://api.il2.oblalex.space"
       )
     });
   return {'process.env': processEnv};
