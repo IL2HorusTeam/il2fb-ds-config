@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        Hi there! API host: { process.env.API_HOST }
+        Hi there! API base URL: { process.env.API_BASE_URL }
       </div>
     );
   }

@@ -22,10 +22,10 @@ function getClientEnvironment(publicUrl) {
       // images into the `src` and `import` them in code to get their paths.
       'PUBLIC_URL': JSON.stringify(publicUrl),
 
-      'API_HOST': JSON.stringify(
+      'API_BASE_URL': JSON.stringify(
         process.env.NODE_ENV === 'development'
         ? "http://127.0.0.1:5000"
-        : "https://api.il2.oblalex.space"
+        : "https://api.il2.oblalex.space/ds-config"
       )
     });
   return {'process.env': processEnv};
