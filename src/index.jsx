@@ -5,6 +5,7 @@ import App from './App';
 
 import './reset.css';
 import './index.css';
+import 'antd/dist/antd.css';
 
 
 ReactDOM.render(
