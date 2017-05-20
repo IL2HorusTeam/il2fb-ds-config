@@ -12,8 +12,9 @@ import Connection from './Components/Connection';
 import Console from './Components/Console';
 import DeviceLink from './Components/DeviceLink';
 import Events from './Components/Events';
-import FileIO from './Components/FileIO';
+import Export from './Components/Export';
 import HUD from './Components/HUD';
+import Import from './Components/Import';
 import Miscellaneous from './Components/Miscellaneous';
 import Morse from './Components/Morse';
 import Refly from './Components/Refly';
@@ -30,8 +31,9 @@ const tabsToComponentsMap = {
   console: Console,
   deviceLink: DeviceLink,
   events: Events,
-  fileIO: FileIO,
+  export: Export,
   hud: HUD,
+  import: Import,
   misc: Miscellaneous,
   morse: Morse,
   refly: Refly,
@@ -73,7 +75,7 @@ class App extends Component {
               <Menu
                 mode="inline"
                 defaultSelectedKeys={[this.props.initialTab]}
-                defaultOpenKeys={['edit']}
+                defaultOpenKeys={['edit', 'fileIO']}
                 style={{ height: '100%' }}
                 onClick={this.toggleMenuItem}
               >
@@ -145,12 +147,20 @@ class App extends Component {
                     </span>
                   </Menu.Item>
                 </SubMenu>
-                <Menu.Item key="fileIO">
-                  <span>
-                    <Icon name="file-text-o" size="lg" className="nav-icon" />
-                    <span className="nav-text">Import / Export</span>
-                  </span>
-                </Menu.Item>
+                <SubMenu key="fileIO" title={<span><Icon name="file-text-o" size="lg" className="nav-icon" />File</span>}>
+                  <Menu.Item key="import">
+                    <span>
+                      <Icon name="upload" size="lg" className="nav-icon" />
+                      <span className="nav-text">Import</span>
+                    </span>
+                  </Menu.Item>
+                  <Menu.Item key="export">
+                    <span>
+                      <Icon name="download" size="lg" className="nav-icon" />
+                      <span className="nav-text">Export</span>
+                    </span>
+                  </Menu.Item>
+                </SubMenu>
               </Menu>
             </Sider>
 
