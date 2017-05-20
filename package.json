@@ -27,6 +27,7 @@
     "superagent": "~3.3.1"
   },
   "devDependencies": {
+    "antd": "2.10.1",
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
     "babel-eslint": "7.1.1",
@@ -62,6 +63,7 @@
     "postcss-loader": "1.0.0",
     "promise": "7.1.1",
     "react-dev-utils": "~0.4.2",
+    "react-fa": "4.2.0",
     "recursive-readdir": "2.1.0",
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
