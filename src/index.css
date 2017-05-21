@@ -1,7 +1,13 @@
-body {
-  font-family: sans-serif;
+html {
+  font-family: 'Roboto', sans-serif;
 }
 
-.nav-icon {
-    margin-right: 0.5em;
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#root, #root > div {
+  height: 100%;
 }

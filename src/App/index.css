@@ -1,0 +1,73 @@
+.content {
+  margin: 10px auto;
+  max-width: 750px;
+  min-height: 100%;
+  padding-bottom: 70px;
+}
+
+.content-inside, .content-inside > .ant-card-body {
+  padding: 0;
+  background: '#fff';
+}
+
+.content-inside:hover {
+  border: 1px solid #e9e9e9;
+  box-shadow: none;
+}
+
+.content-inside-layout {
+  padding: 0;
+  background: '#fff';
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  margin-top: -60px;
+}
+
+.footer-inside {
+  max-width: 750px;
+  margin: 0 auto;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.footer-inside > button {
+  margin: 0 5px
+}
+
+.footer-inside > button > span.fa {
+  padding-right: 10px;
+}
+
+.header {
+  margin-top: 2em;
+  margin-bottom: 2.5em;
+  background: none !important;
+  text-align: center;
+}
+
+.header h1 {
+  font: 2em "Oxygen", arial, verdana, sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+.header h3 {
+  font: 1.2em "Oxygen", arial, verdana, sans-serif;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.nav-menu {
+  width: 180px;
+  background: '#fff';
+  padding: 20px 0;
+}
+
+.nav-icon {
+  margin-right: 0.5em;
+}
+
