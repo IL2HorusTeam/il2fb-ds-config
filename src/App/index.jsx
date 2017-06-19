@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Card, Button, } from 'antd';
-import { Icon } from 'react-fa'
+
+import { Layout, Menu, Card, } from 'antd';
+import { Icon } from 'react-fa';
 
 const { Map } = require('immutable');
 const { SubMenu } = Menu;
@@ -8,19 +9,21 @@ const { Content, Sider } = Layout;
 
 require("typeface-oxygen")
 
-import About from './Components/About';
-import Anticheat from './Components/Anticheat';
-import Connection from './Components/Connection';
-import Console from './Components/Console';
-import DeviceLink from './Components/DeviceLink';
-import Events from './Components/Events';
-import Export from './Components/Export';
-import HUD from './Components/HUD';
-import Import from './Components/Import';
-import Miscellaneous from './Components/Miscellaneous';
-import Morse from './Components/Morse';
-import Refly from './Components/Refly';
-import Statistics from './Components/Statistics';
+import About from './About';
+import Anticheat from './Anticheat';
+import Connection from './Connection';
+import Console from './Console';
+import DeviceLink from './DeviceLink';
+import Events from './Events';
+import Export from './Export';
+import HUD from './HUD';
+import Import from './Import';
+import Miscellaneous from './Miscellaneous';
+import Morse from './Morse';
+import Refly from './Refly';
+import Statistics from './Statistics';
+
+import Footer from './Footer';
 
 import './index.css';
 
@@ -69,7 +72,7 @@ class App extends Component {
         <article className="content">
           <div className="header">
             <h1>«IL-2 FB» DS CE</h1>
-            <h3>config editor for dedicated server of «IL-2 Forgotten Battles»</h3>
+            <h3>configuration editor for dedicated server of «IL-2 Forgotten Battles»</h3>
           </div>
 
           <Card className="content-inside">
@@ -175,14 +178,7 @@ class App extends Component {
           </Card>
         </article>
 
-        <footer>
-          <div className="footer-inside">
-            <Button><Icon name="info" size="lg" />About</Button>
-            <Button><Icon name="book" size="lg" />Docs</Button>
-            <Button><Icon name="code" size="lg" />Sources</Button>
-            <Button><Icon name="bug" size="lg" />Issues</Button>
-          </div>
-        </footer>
+        <Footer />
       </div>
     );
   }

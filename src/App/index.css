@@ -42,6 +42,27 @@ footer {
   padding-right: 10px;
 }
 
+.footer-about {
+  max-width: 350px;
+}
+
+.footer-about .ant-popover-title {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.footer-about p + p {
+  padding-top: 15px;
+}
+
+.footer-about p:last-child {
+  padding-bottom: 15px;
+}
+
+.footer-about p:first-child {
+  padding-top: 10px;
+}
+
 .header {
   margin-top: 2em;
   margin-bottom: 2.5em;
