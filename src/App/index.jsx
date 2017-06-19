@@ -71,8 +71,8 @@ class App extends Component {
       <div>
         <article className="content">
           <div className="header">
-            <h1>«IL-2 FB» DS CE</h1>
-            <h3>configuration editor for dedicated server of «IL-2 Forgotten Battles»</h3>
+            <h1>«IL&#8209;2&nbsp;FB»&nbsp;DS&nbsp;CE</h1>
+            <h3>configuration editor for dedicated server of «IL&#8209;2&nbsp;Sturmovik:&nbsp;Forgotten&nbsp;Battles» aviasimulator</h3>
           </div>
 
           <Card className="content-inside">

@@ -9,8 +9,7 @@ const aboutContent = (
     <p>
       <strong>«IL&#8209;2&nbsp;FB»&nbsp;DS&nbsp;CE</strong> is an online
       configuration editor for dedicated server of
-      «IL&#8209;2&nbsp;Sturmovik:&nbsp;Forgotten&nbsp;Battles» flight
-      aviasimulator.
+      «IL&#8209;2&nbsp;Sturmovik:&nbsp;Forgotten&nbsp;Battles» aviasimulator.
     </p>
     <p>
       The editor is compatible with game <strong>version 4.13.4</strong>.
