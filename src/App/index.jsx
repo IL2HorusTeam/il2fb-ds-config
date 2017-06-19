@@ -172,7 +172,6 @@ class App extends Component {
 
               <Content style={{ padding: '0 24px', minHeight: 280 }}>
                 <Pane />
-                Hi there! API base URL: { process.env.API_BASE_URL }
               </Content>
             </Layout>
           </Card>

@@ -19,7 +19,7 @@ export default class About extends Component {
     };
 
     return (
-      <div>
+      <div className="tab-pane">
         <h1>About server</h1>
         <Form layout="horizontal" style={{ maxWidth: '540px' }}>
           <FormItem

@@ -92,3 +92,13 @@ footer {
   margin-right: 0.5em;
 }
 
+.tab-pane {
+  padding: 24px 12px;
+}
+
+.tab-pane > h1 {
+  border-bottom: 1px solid #E8E8E8;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
