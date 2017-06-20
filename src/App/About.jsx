@@ -9,19 +9,17 @@ export default class About extends Component {
   render() {
     const formItemLayout = {
       labelCol: {
-        xs: { span: 24 },
-        sm: { span: 6 },
+        sm: { span: 4 },
       },
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 14 },
+        sm: { span: 20 },
       },
     };
 
     return (
       <div className="tab-pane">
         <h1>About server</h1>
-        <Form layout="horizontal" style={{ maxWidth: '540px' }}>
+        <Form layout="horizontal">
           <FormItem
             label="Name"
             {...formItemLayout}
