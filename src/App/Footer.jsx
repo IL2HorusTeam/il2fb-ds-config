@@ -26,7 +26,7 @@ const aboutContent = (
       editor.
     </p>
     <p>
-      The editor is powered by <strong>«il2fb&#8209;ds&#8209;config»</strong> library,
+      The editor is powered by <a href="https://github.com/IL2HorusTeam/il2fb-ds-config" target="_blank">«il2fb&#8209;ds&#8209;config»</a> library,
       which is written in Python programming language by <a href="https://github.com/IL2HorusTeam" target="_blank">IL&#8209;2&nbsp;Horus&nbsp;Team</a>.
     </p>
     <p>
