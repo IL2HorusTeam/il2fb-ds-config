@@ -59,11 +59,17 @@ class Speedhack extends Component {
 
     return (
       <Form layout="horizontal">
-        <FormItem>
-          <Switch /> Check server time speed
+        <FormItem
+          label="Check server time speed"
+          {...formItemLayout}
+        >
+          <Switch />
         </FormItem>
-        <FormItem>
-          <Switch /> Check client time speed
+        <FormItem
+          label="Check client time speed"
+          {...formItemLayout}
+        >
+          <Switch />
         </FormItem>
         <FormItem
           label="Max time difference period, sec"

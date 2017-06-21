@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Slider, Switch, Form, Input, InputNumber } from 'antd';
+import { Collapse, Slider, Switch, Form, Input } from 'antd';
 
 const FormItem = Form.Item;
 const Panel = Collapse.Panel;
@@ -19,10 +19,10 @@ export default class Events extends Component {
   render() {
     const formItemLayout = {
       labelCol: {
-        sm: { span: 4 },
+        sm: { span: 6 },
       },
       wrapperCol: {
-        sm: { span: 20 },
+        sm: { span: 18 },
       },
     };
 
@@ -45,11 +45,17 @@ export default class Events extends Component {
           </Panel>
           <Panel header="Log file" key="2">
             <Form layout="horizontal">
-              <FormItem>
-                <Switch checked /> Keep existing log
+              <FormItem
+                label="Keep existing log"
+                {...formItemLayout}
+              >
+                <Switch checked />
               </FormItem>
-              <FormItem>
-                <Switch /> Log buildings
+              <FormItem
+                label="Log buildings"
+                {...formItemLayout}
+              >
+                <Switch />
               </FormItem>
               <FormItem
                 label="File name"

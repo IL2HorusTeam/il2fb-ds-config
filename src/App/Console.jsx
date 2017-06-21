@@ -48,23 +48,32 @@ class Logging extends Component {
   render() {
     const formItemLayout = {
       labelCol: {
-        sm: { span: 4 },
+        sm: { span: 6 },
       },
       wrapperCol: {
-        sm: { span: 20 },
+        sm: { span: 18 },
       },
     };
 
     return (
       <Form layout="horizontal">
-        <FormItem>
-          <Switch /> Enabled
+        <FormItem
+          label="Enabled"
+          {...formItemLayout}
+        >
+          <Switch />
         </FormItem>
-        <FormItem>
-          <Switch checked /> Keep existing log
+        <FormItem
+          label="Keep existing log"
+          {...formItemLayout}
+        >
+          <Switch checked />
         </FormItem>
-        <FormItem>
-          <Switch /> Log time
+        <FormItem
+          label="Log time"
+          {...formItemLayout}
+        >
+          <Switch />
         </FormItem>
         <FormItem
           label="File name"
