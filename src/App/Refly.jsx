@@ -13,7 +13,7 @@ export default class Refly extends Component {
         sm: { span: 8 },
       },
       wrapperCol: {
-        sm: { span: 10 },
+        sm: { span: 16 },
       },
     };
 
