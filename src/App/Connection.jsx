@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Form, Input, InputNumber, Row, Col, Button } from 'antd';
+import { Collapse, Form, Input, InputNumber, Button } from 'antd';
 
 const ButtonGroup = Button.Group;
 const FormItem = Form.Item;

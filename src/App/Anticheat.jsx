@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Slider, Switch, Form, InputNumber, Row, Col } from 'antd';
+import { Collapse, Slider, Switch, Form, InputNumber } from 'antd';
 
 const FormItem = Form.Item;
 const Panel = Collapse.Panel;
@@ -183,7 +183,7 @@ export default class Anticheat extends Component {
           bordered={false}
           defaultActiveKey={['1', ]}
         >
-          <Panel header="Version checks" key="1">
+          <Panel header="Version check" key="1">
             <VersionChecks />
           </Panel>
           <Panel header="Speedhack" key="2">
