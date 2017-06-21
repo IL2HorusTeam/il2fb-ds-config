@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Slider, Switch, Form, InputNumber, Tag, Input, Tooltip, Button } from 'antd';
+import { Collapse, Switch, Form, InputNumber, Tag, Input, Tooltip, Button } from 'antd';
 
 const FormItem = Form.Item;
 const Panel = Collapse.Panel;
@@ -61,10 +61,10 @@ class Logging extends Component {
           <Switch /> Enabled
         </FormItem>
         <FormItem>
-          <Switch /> Keep existing log
+          <Switch checked /> Keep existing log
         </FormItem>
         <FormItem>
-          <Switch checked /> Log time
+          <Switch /> Log time
         </FormItem>
         <FormItem
           label="File name"
@@ -128,7 +128,7 @@ export default class Console extends Component {
         <h1>Server console</h1>
         <Collapse
           bordered={false}
-          defaultActiveKey={['1', ]}
+          defaultActiveKey={['1', '2', ]}
         >
           <Panel header="Connection" key="1">
             <Connection />
