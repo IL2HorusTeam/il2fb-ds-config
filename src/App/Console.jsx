@@ -64,7 +64,7 @@ class Logging extends Component {
           <Switch />
         </FormItem>
         <FormItem
-          label="Keep existing log"
+          label="Keep existing file"
           {...formItemLayout}
         >
           <Switch checked />
@@ -103,7 +103,7 @@ class History extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Number of commands"
+          label="Max commands"
           {...formItemLayout}
         >
           <InputNumber
@@ -113,7 +113,7 @@ class History extends Component {
           />
         </FormItem>
         <FormItem
-          label="Number of records"
+          label="Max records"
           {...formItemLayout}
         >
           <InputNumber

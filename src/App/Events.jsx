@@ -46,7 +46,7 @@ export default class Events extends Component {
           <Panel header="Log file" key="2">
             <Form layout="horizontal">
               <FormItem
-                label="Keep existing log"
+                label="Keep existing file"
                 {...formItemLayout}
               >
                 <Switch checked />

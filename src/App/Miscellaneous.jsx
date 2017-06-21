@@ -10,10 +10,10 @@ export default class Miscellaneous extends Component {
   render() {
     const formItemLayout = {
       labelCol: {
-        sm: { span: 8 },
+        sm: { span: 10 },
       },
       wrapperCol: {
-        sm: { span: 16 },
+        sm: { span: 14 },
       },
     };
 
@@ -62,7 +62,7 @@ export default class Miscellaneous extends Component {
             <Switch />
           </FormItem>
           <FormItem
-            label="New clouds rendering"
+            label="Use new clouds rendering"
             {...formItemLayout}
           >
             <Switch />

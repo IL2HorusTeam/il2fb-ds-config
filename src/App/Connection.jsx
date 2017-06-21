@@ -99,7 +99,7 @@ export default class Connection extends Component {
             />
           </FormItem>
           <FormItem
-            label="Throughput, B/sec"
+            label="Bandwidth, B/sec"
             {...formItemLayout}
           >
             <InputNumber
