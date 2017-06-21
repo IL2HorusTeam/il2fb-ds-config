@@ -53,7 +53,7 @@ class Connection(Model):
 @zope.interface.implementer(INISerializable)
 @zope.interface.implementer(DefaultProvider)
 class Logging(Model):
-    is_enabled = BooleanType(
+    enabled = BooleanType(
         default=False,
         required=True,
     )
@@ -62,7 +62,7 @@ class Logging(Model):
         min_length=1,
         required=True,
     )
-    keep = BooleanType(
+    keep_file = BooleanType(
         default=True,
         required=True,
     )
@@ -74,8 +74,8 @@ class Logging(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'is_enabled': field_from_ini(
-                cls.is_enabled, ini,
+            'enabled': field_from_ini(
+                cls.enabled, ini,
                 'Console', 'LOG',
             ),
             'file_name': field_from_ini(
@@ -86,8 +86,8 @@ class Logging(Model):
                 cls.log_time, ini,
                 'Console', 'LOGTIME',
             ),
-            'keep': field_from_ini(
-                cls.keep, ini,
+            'keep_file': field_from_ini(
+                cls.keep_file, ini,
                 'Console', 'LOGKEEP',
             ),
         })
@@ -102,14 +102,14 @@ class Logging(Model):
 
 @zope.interface.implementer(INISerializable)
 @zope.interface.implementer(DefaultProvider)
-class HistorySize(Model):
-    commands = IntType(
+class History(Model):
+    max_commands = IntType(
         min_value=0,
         max_value=10000,
         default=128,
         required=True,
     )
-    records = IntType(
+    max_records = IntType(
         min_value=0,
         max_value=10000,
         default=128,
@@ -119,12 +119,12 @@ class HistorySize(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'commands': field_from_ini(
-                cls.commands, ini,
+            'max_commands': field_from_ini(
+                cls.max_commands, ini,
                 'Console', 'HISTORYCMD',
             ),
-            'records': field_from_ini(
-                cls.records, ini,
+            'max_records': field_from_ini(
+                cls.max_records, ini,
                 'Console', 'HISTORY',
             ),
         })
@@ -148,8 +148,8 @@ class Console(Model):
         model_spec=Logging,
         required=True,
     )
-    history_size = ModelType(
-        model_spec=HistorySize,
+    history = ModelType(
+        model_spec=History,
         required=True,
     )
 
@@ -158,7 +158,7 @@ class Console(Model):
         return cls({
             'connection': Connection.from_ini(ini),
             'logging': Logging.from_ini(ini),
-            'history_size': HistorySize.from_ini(ini),
+            'history': History.from_ini(ini),
         })
 
     @classmethod
@@ -166,5 +166,5 @@ class Console(Model):
         return cls({
             'connection': Connection.default(),
             'logging': Logging.default(),
-            'history_size': HistorySize.default(),
+            'history': History.default(),
         })

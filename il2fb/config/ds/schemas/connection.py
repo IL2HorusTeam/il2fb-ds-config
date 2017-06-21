@@ -78,7 +78,7 @@ class Connection(Model):
         default=8,
         required=True,
     )
-    throughput = IntType(
+    bandwidth = IntType(
         min_value=300,
         max_value=1000000,
         default=5000,
@@ -104,8 +104,8 @@ class Connection(Model):
                 cls.max_clients, ini,
                 'NET', 'serverChannels',
             ),
-            'throughput': field_from_ini(
-                cls.throughput, ini,
+            'bandwidth': field_from_ini(
+                cls.bandwidth, ini,
                 'NET', 'speed',
             ),
             'proxy': Proxy.from_ini(ini),
@@ -117,6 +117,6 @@ class Connection(Model):
             'host': cls.host.default,
             'port': cls.port.default,
             'max_clients': cls.max_clients.default,
-            'throughput': cls.throughput.default,
+            'bandwidth': cls.bandwidth.default,
             'proxy': Proxy.default(),
         })

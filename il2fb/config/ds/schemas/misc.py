@@ -11,7 +11,7 @@ from .helpers import field_from_ini
 
 @zope.interface.implementer(INISerializable)
 @zope.interface.implementer(DefaultProvider)
-class Other(Model):
+class Miscellaneous(Model):
     difficulty = IntType(
         min_value=0,
         default=193791,
@@ -37,7 +37,7 @@ class Other(Model):
         default=False,
         required=True,
     )
-    new_clouds = BooleanType(
+    use_new_clouds_rendering = BooleanType(
         default=True,
         required=True,
     )
@@ -69,8 +69,8 @@ class Other(Model):
                 cls.skip_paratrooper_views, ini,
                 'game', 'SkipParatrooperViews',
             ),
-            'new_clouds': field_from_ini(
-                cls.new_clouds, ini,
+            'use_new_clouds_rendering': field_from_ini(
+                cls.use_new_clouds_rendering, ini,
                 'game', 'TypeClouds',
             ),
         })

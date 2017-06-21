@@ -18,7 +18,7 @@ class Logging(Model):
         min_length=1,
         required=True,
     )
-    keep = BooleanType(
+    keep_file = BooleanType(
         default=True,
         required=True,
     )
@@ -34,8 +34,8 @@ class Logging(Model):
                 cls.file_name, ini,
                 'game', 'eventlog',
             ),
-            'keep': field_from_ini(
-                cls.keep, ini,
+            'keep_file': field_from_ini(
+                cls.keep_file, ini,
                 'game', 'eventlogkeep',
             ),
             'log_buildings': field_from_ini(

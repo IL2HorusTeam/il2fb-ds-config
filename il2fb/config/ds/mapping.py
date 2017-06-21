@@ -6,7 +6,7 @@ OPTIONS_MAPPING = {
     'NET.serverDescription': 'about.description',
 
     'NET.serverChannels': 'connection.max_clients',
-    'NET.speed': 'connection.throughput',
+    'NET.speed': 'connection.bandwidth',
 
     'NET.localHost': 'connection.host',
     'NET.localPort': 'connection.port',
@@ -22,17 +22,17 @@ OPTIONS_MAPPING = {
     'NET.checkTimeSpeedDifferense': 'anticheat.speedhack.max_time_difference',
     'NET.checkTimeSpeedInterval': 'anticheat.speedhack.max_time_difference_period',
 
-    'NET.difficulty': 'other.difficulty',
-    'NET.SkinDownload': 'other.display_custom_skins',
-    'NET.allowCustomSounds': 'other.allow_custom_sounds',
-    'NET.reflyDisabled': 'refly.is_disabled',
-    'NET.reflyKIADelay': 'refly.kia_delay',
-    'NET.reflyKIADelayMultiplier': 'refly.kia_delay_multiplier',
-    'NET.maxAllowedKIA': 'refly.max_kia',
+    'NET.difficulty': 'misc.difficulty',
+    'NET.SkinDownload': 'misc.display_custom_skins',
+    'NET.allowCustomSounds': 'misc.allow_custom_sounds',
+    'NET.reflyDisabled': 'refly.enabled',
+    'NET.reflyKIADelay': 'refly.death_penalty',
+    'NET.reflyKIADelayMultiplier': 'refly.death_penalty_multiplier',
+    'NET.maxAllowedKIA': 'refly.death_limit',
     'NET.allowMorseAsText': 'morse.allow_morse_as_text',
-    'NET.filterUserNames': 'other.filter_user_names',
+    'NET.filterUserNames': 'misc.filter_user_names',
 
-    'NET.disableNetStatStatistics': 'statistics.is_disabled',
+    'NET.disableNetStatStatistics': 'statistics.enabled',
     'NET.showPilotNumber': 'statistics.users.show_number',
     'NET.showPilotPing': 'statistics.users.show_ping',
     'NET.showPilotName': 'statistics.users.show_name',
@@ -45,19 +45,19 @@ OPTIONS_MAPPING = {
 
     'Console.IP': 'console.connection.port',
     'Console.IPS': 'console.connection.allowed_hosts',
-    'Console.LOG': 'console.logging.is_enabled',
+    'Console.LOG': 'console.logging.enabled',
     'Console.LOGFILE': 'console.logging.file_name',
     'Console.LOGTIME': 'console.logging.log_time',
-    'Console.LOGKEEP': 'console.logging.keep',
-    'Console.HISTORY': 'console.history_size.records',
-    'Console.HISTORYCMD': 'console.history_size.commands',
+    'Console.LOGKEEP': 'console.logging.keep_file',
+    'Console.HISTORY': 'console.history.max_records',
+    'Console.HISTORYCMD': 'console.history.max_commands',
 
     'DeviceLink.host': 'device_link.connection.host',
     'DeviceLink.port': 'device_link.connection.port',
     'DeviceLink.IPS': 'device_link.connection.allowed_hosts',
 
     'game.eventlog': 'events.logging.file_name',
-    'game.eventlogkeep': 'events.logging.keep',
+    'game.eventlogkeep': 'events.logging.keep_file',
     'game.eventlogHouse': 'events.logging.log_buildings',
 
     'game.NoMissionInfoHud': 'hud.no_mission_info',
@@ -65,9 +65,9 @@ OPTIONS_MAPPING = {
     'game.lowInfoHud': 'hud.display_at_bottom',
     'game.ShowMorseAsText': 'morse.show_morse_as_text',
     'game.BlockMorseChat': 'morse.block_morse_chat',
-    'game.SmallMapWPLabels': 'other.small_way_point_labels',
-    'game.SkipParatrooperViews': 'other.skip_paratrooper_views',
-    'game.TypeClouds': 'other.new_clouds',
+    'game.SmallMapWPLabels': 'misc.small_way_point_labels',
+    'game.SkipParatrooperViews': 'misc.skip_paratrooper_views',
+    'game.TypeClouds': 'misc.use_new_clouds_rendering',
 
     'chat.autoLogDetail': 'events.chat_level',
 

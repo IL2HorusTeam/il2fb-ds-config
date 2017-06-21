@@ -119,8 +119,8 @@ class Belligerents(Model):
 @zope.interface.implementer(INISerializable)
 @zope.interface.implementer(DefaultProvider)
 class Statistics(Model):
-    is_disabled = BooleanType(
-        default=False,
+    enabled = BooleanType(
+        default=True,
         required=True,
     )
     users = ModelType(
@@ -135,8 +135,8 @@ class Statistics(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'is_disabled': field_from_ini(
-                cls.is_disabled, ini,
+            'enabled': not field_from_ini(
+                cls.enabled, ini,
                 'NET', 'disableNetStatStatistics',
             ),
             'users': Users.from_ini(ini),
@@ -146,7 +146,7 @@ class Statistics(Model):
     @classmethod
     def default(cls):
         return cls({
-            'is_disabled': cls.is_disabled.default,
+            'enabled': cls.enabled.default,
             'users': Users.default(),
             'belligerents': Belligerents.default(),
         })

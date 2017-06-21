@@ -13,8 +13,8 @@ from .device_link import DeviceLink
 from .events import Events
 from .hud import HUD
 from .interfaces import INISerializable, DefaultProvider
+from .misc import Miscellaneous
 from .morse import Morse
-from .other import Other
 from .refly import Refly
 from .statistics import Statistics
 
@@ -62,8 +62,8 @@ class ServerConfig(Model):
         model_spec=Statistics,
         required=True,
     )
-    other = ModelType(
-        model_spec=Other,
+    misc = ModelType(
+        model_spec=Miscellaneous,
         required=True,
     )
 
