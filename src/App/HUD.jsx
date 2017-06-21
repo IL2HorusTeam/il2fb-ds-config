@@ -22,19 +22,19 @@ export default class HUD extends Component {
         <h1>HUD</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Display mission-related messages"
+            label="Show mission-related messages"
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Display kill-related messages"
+            label="Show kill-related messages"
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Display messages at bottom of screen"
+            label="Show messages at bottom of screen"
             {...formItemLayout}
           >
             <Switch />
