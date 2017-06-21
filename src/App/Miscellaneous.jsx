@@ -1,10 +1,75 @@
 import React, { Component } from 'react';
 
+import { Switch, Form, InputNumber } from 'antd';
+
+const FormItem = Form.Item;
+
 
 export default class Miscellaneous extends Component {
 
   render() {
-    return (<div>Miscellaneous</div>);
+    const formItemLayout = {
+      labelCol: {
+        sm: { span: 8 },
+      },
+      wrapperCol: {
+        sm: { span: 16 },
+      },
+    };
+
+    return (
+      <div className="tab-pane">
+        <h1>Miscellaneous options</h1>
+        <Form layout="horizontal">
+          <FormItem
+            label="Difficulty"
+            {...formItemLayout}
+          >
+            <InputNumber
+              defaultValue={0}
+              min={0}
+              size={14}
+            />
+          </FormItem>
+          <FormItem
+            label="Display custom skins"
+            {...formItemLayout}
+          >
+            <Switch />
+          </FormItem>
+          <FormItem
+            label="Allow custom sounds"
+            {...formItemLayout}
+          >
+            <Switch />
+          </FormItem>
+          <FormItem
+            label="Filter user names"
+            {...formItemLayout}
+          >
+            <Switch />
+          </FormItem>
+          <FormItem
+            label="Small way point labels"
+            {...formItemLayout}
+          >
+            <Switch />
+          </FormItem>
+          <FormItem
+            label="Skip paratrooper views"
+            {...formItemLayout}
+          >
+            <Switch />
+          </FormItem>
+          <FormItem
+            label="New clouds rendering"
+            {...formItemLayout}
+          >
+            <Switch />
+          </FormItem>
+        </Form>
+      </div>
+    );
   }
 
 }
