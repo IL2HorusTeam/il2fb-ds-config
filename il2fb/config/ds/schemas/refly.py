@@ -5,8 +5,9 @@ import zope.interface
 from schematics.models import Model
 from schematics.types import BooleanType, IntType, FloatType
 
-from .interfaces import INISerializable, DefaultProvider
+from .constants import NO_DEATH_LIMIT_FLAG
 from .helpers import field_from_ini
+from .interfaces import INISerializable, DefaultProvider
 
 
 @zope.interface.implementer(INISerializable)
@@ -38,6 +39,11 @@ class Refly(Model):
             cls.death_limit, ini,
             'NET', 'maxAllowedKIA',
         )
+        death_limit = (
+            None
+            if death_limit == NO_DEATH_LIMIT_FLAG
+            else death_limit
+        )
 
         return cls({
             'enabled': not field_from_ini(
@@ -52,7 +58,7 @@ class Refly(Model):
                 cls.death_penalty_multiplier, ini,
                 'NET', 'reflyKIADelayMultiplier',
             ),
-            'death_limit': None if death_limit == -1 else death_limit,
+            'death_limit': death_limit,
         })
 
     @classmethod

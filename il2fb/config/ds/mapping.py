@@ -35,7 +35,7 @@ OPTIONS_MAPPING = {
     'NET.disableNetStatStatistics': 'statistics.enabled',
     'NET.showPilotNumber': 'statistics.users.show_number',
     'NET.showPilotPing': 'statistics.users.show_ping',
-    'NET.showPilotName': 'statistics.users.show_name',
+    'NET.Show callsign': 'statistics.users.show_name',
     'NET.showPilotArmy': 'statistics.users.show_belligerent',
     'NET.showPilotACDesignation': 'statistics.users.show_aircraft_designation',
     'NET.showPilotACType': 'statistics.users.show_aircraft_type',
