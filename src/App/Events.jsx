@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Slider, Switch, Form, Input } from 'antd';
+import { Collapse, Slider, Switch, Form, Input, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 const Panel = Collapse.Panel;
@@ -46,19 +46,19 @@ export default class Events extends Component {
           <Panel header="Log file" key="2">
             <Form layout="horizontal">
               <FormItem
-                label="Keep existing file"
+                label={<Tooltip title="game.eventlogkeep">Keep existing file</Tooltip>}
                 {...formItemLayout}
               >
                 <Switch checked />
               </FormItem>
               <FormItem
-                label="Log buildings"
+                label={<Tooltip title="game.eventlogHouse">Log buildings</Tooltip>}
                 {...formItemLayout}
               >
                 <Switch />
               </FormItem>
               <FormItem
-                label="File name"
+                label={<Tooltip title="game.eventlog">File name</Tooltip>}
                 {...formItemLayout}
               >
                 <Input placeholder="eventlog.lst" />

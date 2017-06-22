@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Switch, Form, InputNumber } from 'antd';
+import { Collapse, Switch, Form, InputNumber, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 const Panel = Collapse.Panel;
@@ -21,43 +21,43 @@ class Users extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Show number"
+          label={<Tooltip title="NET.showPilotArmy">Show belligerent</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Show ping"
+          label={<Tooltip title="NET.showPilotName">Show callsign</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Show callsign"
+          label={<Tooltip title="NET.showPilotNumber">Show tail number</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Show belligerent"
+          label={<Tooltip title="NET.showPilotACDesignation">Show aircraft designation</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Show aircraft designation"
+          label={<Tooltip title="NET.showPilotACType">Show aircraft type</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Show aircraft type"
+          label={<Tooltip title="NET.showPilotPing">Show ping</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Show score"
+          label={<Tooltip title="NET.showPilotScore">Show score</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
@@ -84,13 +84,13 @@ class Belligerents extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Show score"
+          label={<Tooltip title="NET.showTeamScore">Show score</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Accumulate score"
+          label={<Tooltip title="NET.cumulativeTeamScore">Accumulate score</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
@@ -119,7 +119,7 @@ export default class Statistics extends Component {
         <h1>Statistics display</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Enabled"
+            label={<Tooltip title="¬ NET.disableNetStatStatistics">Enabled</Tooltip>}
             {...formItemLayout}
           >
             <Switch checked />

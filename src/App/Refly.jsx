@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Switch, Form, InputNumber } from 'antd';
+import { Switch, Form, InputNumber, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -22,13 +22,13 @@ export default class Refly extends Component {
         <h1>Refly control</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Allow refly"
+            label={<Tooltip title="¬ NET.reflyDisabled">Allow refly</Tooltip>}
             {...formItemLayout}
           >
             <Switch checked />
           </FormItem>
           <FormItem
-            label="Death penalty, sec"
+            label={<Tooltip title="NET.reflyKIADelay">Death penalty, sec</Tooltip>}
             {...formItemLayout}
           >
             <InputNumber
@@ -37,7 +37,7 @@ export default class Refly extends Component {
             />
           </FormItem>
           <FormItem
-            label="Death penalty multiplier"
+            label={<Tooltip title="NET.reflyKIADelayMultiplier">Death penalty multiplier</Tooltip>}
             {...formItemLayout}
           >
             <InputNumber
@@ -48,7 +48,7 @@ export default class Refly extends Component {
             />
           </FormItem>
           <FormItem
-            label="Death limit, #"
+            label={<Tooltip title="NET.maxAllowedKIA">Death limit, #</Tooltip>}
             {...formItemLayout}
           >
             <InputNumber

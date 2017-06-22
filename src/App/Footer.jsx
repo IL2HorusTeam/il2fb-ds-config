@@ -26,7 +26,13 @@ const aboutContent = (
       editor.
     </p>
     <p>
-      The editor is powered by <a href="https://github.com/IL2HorusTeam/il2fb-ds-config" target="_blank">«il2fb&#8209;ds&#8209;config»</a> library,
+      Field names contain tooltips with names of parameters in configuration
+      file. Tooltips can start with <strong>¬</strong> symbol of boolean
+      algebra, which means that option's values in editor and in file are
+      mutually inverted.
+    </p>
+    <p>
+      The editor is powered by <a href="https://pypi.python.org/pypi/il2fb-ds-config" target="_blank">«il2fb&#8209;ds&#8209;config»</a> library,
       which is written in Python programming language by <a href="https://github.com/IL2HorusTeam" target="_blank">IL&#8209;2&nbsp;Horus&nbsp;Team</a>.
     </p>
     <p>

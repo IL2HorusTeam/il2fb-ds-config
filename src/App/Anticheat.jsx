@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Slider, Switch, Form, InputNumber } from 'antd';
+import { Collapse, Slider, Switch, Form, InputNumber, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 const Panel = Collapse.Panel;
@@ -37,7 +37,7 @@ class VersionChecks extends Component {
         max={2}
         step={null}
         marks={versionChecksMarks}
-        tipFormatter={value => `CRT=${value}`}
+        tipFormatter={value => `NET.checkRuntime=${value}`}
       />
     );
   }
@@ -60,29 +60,19 @@ class Speedhack extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Check server time speed"
+          label={<Tooltip title="NET.checkServerTimeSpeed">Check server time speed</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Check client time speed"
+          label={<Tooltip title="NET.checkClientTimeSpeed">Check client time speed</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Max time difference period, sec"
-          {...formItemLayout}
-        >
-          <InputNumber
-            min={1}
-            max={1000}
-            defaultValue={17}
-          />
-        </FormItem>
-        <FormItem
-          label="Max time difference, %"
+          label={<Tooltip title="NET.checkTimeSpeedDifferense">Max time difference, %</Tooltip>}
           {...formItemLayout}
         >
           <InputNumber
@@ -93,6 +83,16 @@ class Speedhack extends Component {
             max={1}
             formatter={value => Math.round(value * 100)}
             parser={value => Math.round(value / 100)}
+          />
+        </FormItem>
+        <FormItem
+          label={<Tooltip title="NET.checkTimeSpeedInterval">Max time difference period, sec</Tooltip>}
+          {...formItemLayout}
+        >
+          <InputNumber
+            min={1}
+            max={1000}
+            defaultValue={17}
           />
         </FormItem>
       </Form>
@@ -122,7 +122,7 @@ class Lags extends Component {
           <Panel header="Max time" key="1">
             <Form layout="horizontal">
               <FormItem
-                label="Near, sec"
+                label={<Tooltip title="MaxLag.nearMaxLagTime">Near, sec</Tooltip>}
                 {...formItemLayout}
               >
                 <InputNumber
@@ -134,7 +134,7 @@ class Lags extends Component {
                 />
               </FormItem>
               <FormItem
-                label="Far, sec"
+                label={<Tooltip title="MaxLag.farMaxLagTime">Far, sec</Tooltip>}
                 {...formItemLayout}
               >
                 <InputNumber
@@ -150,7 +150,7 @@ class Lags extends Component {
           <Panel header="Warnings" key="2">
             <Form layout="horizontal">
               <FormItem
-                label="Delay, sec"
+                label={<Tooltip title="MaxLag.cheaterWarningDelay">Delay, sec</Tooltip>}
                 {...formItemLayout}
               >
                 <InputNumber
@@ -162,7 +162,7 @@ class Lags extends Component {
                 />
               </FormItem>
               <FormItem
-                label="Max number, #"
+                label={<Tooltip title="MaxLag.cheaterWarningNum">Max number, #</Tooltip>}
                 {...formItemLayout}
               >
                 <InputNumber

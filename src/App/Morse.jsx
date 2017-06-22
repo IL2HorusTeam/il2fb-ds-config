@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Switch, Form } from 'antd';
+import { Switch, Form, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -22,19 +22,19 @@ export default class Morse extends Component {
         <h1>Morse messages</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Allow morse as text"
+            label={<Tooltip title="NET.allowMorseAsText">Allow morse as text</Tooltip>}
             {...formItemLayout}
           >
             <Switch checked />
           </FormItem>
           <FormItem
-            label="Show morse as text"
+          label={<Tooltip title="game.ShowMorseAsText">Show morse as text</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Block morse chat"
+            label={<Tooltip title="game.BlockMorseChat">Block morse chat</Tooltip>}
             {...formItemLayout}
           >
             <Switch />

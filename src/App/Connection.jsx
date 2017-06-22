@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Collapse, Form, Input, InputNumber, Button } from 'antd';
+import { Collapse, Form, Input, InputNumber, Button, Tooltip } from 'antd';
 
 const ButtonGroup = Button.Group;
 const FormItem = Form.Item;
@@ -22,13 +22,13 @@ class Proxy extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Host"
+          label={<Tooltip title="NET.socksHost">Host</Tooltip>}
           {...formItemLayout}
         >
-          <Input placeholder="192.168.0.1" />
+          <Input placeholder="localhost" />
         </FormItem>
         <FormItem
-          label="Port"
+          label={<Tooltip title="NET.socksPort">Port</Tooltip>}
           {...formItemLayout}
         >
           <InputNumber
@@ -38,13 +38,13 @@ class Proxy extends Component {
           />
         </FormItem>
         <FormItem
-          label="User"
+          label={<Tooltip title="NET.socksUser">User</Tooltip>}
           {...formItemLayout}
         >
           <Input placeholder="username" />
         </FormItem>
         <FormItem
-          label="Password"
+          label={<Tooltip title="NET.socksPwd">Password</Tooltip>}
           {...formItemLayout}
         >
           <Input placeholder="password" />
@@ -73,13 +73,13 @@ export default class Connection extends Component {
         <h1>Player connection</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Host"
+            label={<Tooltip title="NET.localHost">Host</Tooltip>}
             {...formItemLayout}
           >
-            <Input placeholder="192.168.0.1" />
+            <Input placeholder="localhost" />
           </FormItem>
           <FormItem
-            label="Port"
+            label={<Tooltip title="NET.localPort">Port</Tooltip>}
             {...formItemLayout}
           >
             <InputNumber
@@ -89,7 +89,7 @@ export default class Connection extends Component {
             />
           </FormItem>
           <FormItem
-            label="Max clients"
+            label={<Tooltip title="NET.serverChannels">Max clients</Tooltip>}
             {...formItemLayout}
           >
             <InputNumber
@@ -99,7 +99,7 @@ export default class Connection extends Component {
             />
           </FormItem>
           <FormItem
-            label="Bandwidth, B/sec"
+            label={<Tooltip title="NET.speed">Bandwidth, B/sec</Tooltip>}
             {...formItemLayout}
           >
             <InputNumber
@@ -107,11 +107,13 @@ export default class Connection extends Component {
               min={300}
               max={1000000}
             />
-            <ButtonGroup size="small">
-              <Button type="primary">Modem 28.8K</Button>
-              <Button type="primary">Modem 56K</Button>
-              <Button type="primary">DSL cable</Button>
-            </ButtonGroup>
+            <Tooltip title="Click to set a predefined value" placement="right">
+              <ButtonGroup size="small">
+                <Button type="primary">Modem 28.8K</Button>
+                <Button type="primary">Modem 56K</Button>
+                <Button type="primary">DSL cable</Button>
+              </ButtonGroup>
+            </Tooltip>
           </FormItem>
         </Form>
         <Collapse

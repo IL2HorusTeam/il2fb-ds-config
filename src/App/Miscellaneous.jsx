@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Switch, Form, InputNumber } from 'antd';
+import { Switch, Form, InputNumber, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -22,7 +22,7 @@ export default class Miscellaneous extends Component {
         <h1>Miscellaneous options</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Difficulty"
+            label={<Tooltip title="NET.difficulty">Difficulty</Tooltip>}
             {...formItemLayout}
           >
             <InputNumber
@@ -32,37 +32,37 @@ export default class Miscellaneous extends Component {
             />
           </FormItem>
           <FormItem
-            label="Display custom skins"
+            label={<Tooltip title="NET.SkinDownload">Display custom skins</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Allow custom sounds"
+            label={<Tooltip title="NET.allowCustomSounds">Allow custom sounds</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Filter user names"
+            label={<Tooltip title="NET.filterUserNames">Filter user names</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Small way point labels"
+            label={<Tooltip title="game.SmallMapWPLabels">Display small way point labels</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Skip paratrooper views"
+            label={<Tooltip title="game.SkipParatrooperViews">Skip paratrooper views</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Use new clouds rendering"
+            label={<Tooltip title="game.TypeClouds">Use new clouds rendering</Tooltip>}
             {...formItemLayout}
           >
             <Switch />

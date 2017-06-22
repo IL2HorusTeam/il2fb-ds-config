@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Switch, Form } from 'antd';
+import { Switch, Form, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -22,19 +22,19 @@ export default class HUD extends Component {
         <h1>HUD</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Show mission-related messages"
+            label={<Tooltip title="¬ game.NoMissionInfoHud">Show mission-related messages</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Show kill-related messages"
+            label={<Tooltip title="¬ game.noKillInfoHud">Show kill-related messages</Tooltip>}
             {...formItemLayout}
           >
             <Switch />
           </FormItem>
           <FormItem
-            label="Show messages at bottom of screen"
+            label={<Tooltip title="game.lowInfoHud">Show messages at bottom of screen</Tooltip>}
             {...formItemLayout}
           >
             <Switch />

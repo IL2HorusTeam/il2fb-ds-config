@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input } from 'antd';
+import { Form, Input, Tooltip } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -21,13 +21,14 @@ export default class About extends Component {
         <h1>About server</h1>
         <Form layout="horizontal">
           <FormItem
-            label="Name"
+            label={<Tooltip title="NET.serverName">Name</Tooltip>}
             {...formItemLayout}
           >
             <Input placeholder="Example server" />
           </FormItem>
+
           <FormItem
-            label="Description"
+            label={<Tooltip title="NET.serverDescription">Description</Tooltip>}
             {...formItemLayout}
           >
             <Input placeholder="Example server description" />

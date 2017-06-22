@@ -21,13 +21,13 @@ class Connection extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Host"
+          label={<Tooltip title="DeviceLink.host">Host</Tooltip>}
           {...formItemLayout}
         >
           <Input placeholder="localhost" />
         </FormItem>
         <FormItem
-          label="Port"
+          label={<Tooltip title="DeviceLink.port">Port</Tooltip>}
           {...formItemLayout}
         >
           <InputNumber
@@ -37,7 +37,7 @@ class Connection extends Component {
           />
         </FormItem>
         <FormItem
-          label="Allowed hosts"
+          label={<Tooltip title="DeviceLink.IPS">Allowed hosts</Tooltip>}
           {...formItemLayout}
         >
           <Button size="small" type="dashed">+ New Host</Button>

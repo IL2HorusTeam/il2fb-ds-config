@@ -21,7 +21,7 @@ class Connection extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Port"
+          label={<Tooltip title="Console.IP">Port</Tooltip>}
           {...formItemLayout}
         >
           <InputNumber
@@ -31,7 +31,7 @@ class Connection extends Component {
           />
         </FormItem>
         <FormItem
-          label="Allowed hosts"
+          label={<Tooltip title="Console.IPS">Allowed hosts</Tooltip>}
           {...formItemLayout}
         >
           <Button size="small" type="dashed">+ New Host</Button>
@@ -58,25 +58,25 @@ class Logging extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Enabled"
+          label={<Tooltip title="Console.LOG">Enabled</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="Keep existing file"
+          label={<Tooltip title="Console.LOGKEEP">Keep existing file</Tooltip>}
           {...formItemLayout}
         >
           <Switch checked />
         </FormItem>
         <FormItem
-          label="Log time"
+          label={<Tooltip title="Console.LOGTIME">Log time</Tooltip>}
           {...formItemLayout}
         >
           <Switch />
         </FormItem>
         <FormItem
-          label="File name"
+          label={<Tooltip title="Console.LOGFILE">File name</Tooltip>}
           {...formItemLayout}
         >
           <Input placeholder="log.lst" />
@@ -103,7 +103,7 @@ class History extends Component {
     return (
       <Form layout="horizontal">
         <FormItem
-          label="Max commands"
+          label={<Tooltip title="Console.HISTORY">Max records</Tooltip>}
           {...formItemLayout}
         >
           <InputNumber
@@ -113,7 +113,7 @@ class History extends Component {
           />
         </FormItem>
         <FormItem
-          label="Max records"
+          label={<Tooltip title="Console.HISTORYCMD">Max commands</Tooltip>}
           {...formItemLayout}
         >
           <InputNumber
