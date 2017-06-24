@@ -6,6 +6,7 @@ from schematics.models import Model
 from schematics.types import StringType, IntType
 from schematics.types.compound import ListType, ModelType
 
+from .constants import FORBID_DEVICE_LINK_CONNECTIONS_FLAG
 from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
@@ -18,10 +19,10 @@ class Connection(Model):
         required=True,
     )
     port = IntType(
-        min_value=0,
+        min_value=1000,
         max_value=65000,
-        default=0,
-        required=True,
+        default=None,
+        required=False,
     )
     allowed_hosts = ListType(
         field=StringType,
@@ -32,15 +33,22 @@ class Connection(Model):
 
     @classmethod
     def from_ini(cls, ini):
+        port = field_from_ini(
+            cls.port, ini,
+            'DeviceLink', 'port',
+        )
+        port = (
+            None
+            if port == FORBID_DEVICE_LINK_CONNECTIONS_FLAG
+            else port
+        )
+
         return cls({
             'host': field_from_ini(
                 cls.host, ini,
                 'DeviceLink', 'host',
             ),
-            'port': field_from_ini(
-                cls.port, ini,
-                'DeviceLink', 'port',
-            ),
+            'port': port,
             'allowed_hosts': (
                 field_from_ini(
                     cls.allowed_hosts, ini,

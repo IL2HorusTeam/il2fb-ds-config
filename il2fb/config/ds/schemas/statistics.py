@@ -13,7 +13,7 @@ from .helpers import field_from_ini
 @zope.interface.implementer(INISerializable)
 @zope.interface.implementer(DefaultProvider)
 class Users(Model):
-    show_number = BooleanType(
+    show_tail_number = BooleanType(
         default=True,
         required=True,
     )
@@ -21,7 +21,7 @@ class Users(Model):
         default=True,
         required=True,
     )
-    show_name = BooleanType(
+    show_callsign = BooleanType(
         default=True,
         required=True,
     )
@@ -45,16 +45,16 @@ class Users(Model):
     @classmethod
     def from_ini(cls, ini):
         return cls({
-            'show_number': field_from_ini(
-                cls.show_number, ini,
+            'show_tail_number': field_from_ini(
+                cls.show_tail_number, ini,
                 'NET', 'showPilotNumber',
             ),
             'show_ping': field_from_ini(
                 cls.show_ping, ini,
                 'NET', 'showPilotPing',
             ),
-            'show_name': field_from_ini(
-                cls.show_name, ini,
+            'show_callsign': field_from_ini(
+                cls.show_callsign, ini,
                 'NET', 'showPilotName',
             ),
             'show_belligerent': field_from_ini(

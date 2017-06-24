@@ -58,7 +58,7 @@ class Events(Model):
     chat_level = IntType(
         min_value=0,
         max_value=3,
-        default=0,
+        default=3,
         required=True,
     )
     logging = ModelType(

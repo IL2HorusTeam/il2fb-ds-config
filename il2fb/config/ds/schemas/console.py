@@ -6,6 +6,7 @@ from schematics.models import Model
 from schematics.types import StringType, IntType, BooleanType
 from schematics.types.compound import ListType, ModelType
 
+from .constants import FORBID_CONSOLE_CONNECTIONS_FLAG
 from .interfaces import INISerializable, DefaultProvider
 from .helpers import field_from_ini
 
@@ -14,10 +15,10 @@ from .helpers import field_from_ini
 @zope.interface.implementer(DefaultProvider)
 class Connection(Model):
     port = IntType(
-        min_value=0,
+        min_value=1000,
         max_value=65000,
-        default=0,
-        required=True,
+        default=None,
+        required=False,
     )
     allowed_hosts = ListType(
         field=StringType,
@@ -28,11 +29,18 @@ class Connection(Model):
 
     @classmethod
     def from_ini(cls, ini):
+        port = field_from_ini(
+            cls.port, ini,
+            'Console', 'IP',
+        )
+        port = (
+            None
+            if port == FORBID_CONSOLE_CONNECTIONS_FLAG
+            else port
+        )
+
         return cls({
-            'port': field_from_ini(
-                cls.port, ini,
-                'Console', 'IP',
-            ),
+            'port': port,
             'allowed_hosts': (
                 field_from_ini(
                     cls.allowed_hosts, ini,

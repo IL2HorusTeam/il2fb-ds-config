@@ -29,7 +29,7 @@ class Miscellaneous(Model):
         default=False,
         required=True,
     )
-    small_way_point_labels = BooleanType(
+    display_small_way_point_labels = BooleanType(
         default=True,
         required=True,
     )
@@ -61,8 +61,8 @@ class Miscellaneous(Model):
                 cls.filter_user_names, ini,
                 'NET', 'filterUserNames',
             ),
-            'small_way_point_labels': field_from_ini(
-                cls.small_way_point_labels, ini,
+            'display_small_way_point_labels': field_from_ini(
+                cls.display_small_way_point_labels, ini,
                 'game', 'SmallMapWPLabels',
             ),
             'skip_paratrooper_views': field_from_ini(

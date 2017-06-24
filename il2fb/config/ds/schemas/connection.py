@@ -18,6 +18,8 @@ class Proxy(Model):
         required=True,
     )
     port = IntType(
+        min_value=1000,
+        max_value=65000,
         default=1080,
         required=True,
     )

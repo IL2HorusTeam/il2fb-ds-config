@@ -7,8 +7,9 @@ from schematics.models import Model
 from schematics.types import IntType, FloatType
 from schematics.types.compound import ModelType
 
-from ..interfaces import INISerializable, DefaultProvider
+from ..constants import NO_CHEATER_WARNINGS_LIMIT_FLAG
 from ..helpers import field_from_ini
+from ..interfaces import INISerializable, DefaultProvider
 
 
 @zope.interface.implementer(INISerializable)
@@ -68,22 +69,30 @@ class Warnings(Model):
         default=10.0,
         required=True,
     )
-    max_number = IntType(
+    limit = IntType(
         default=3,
-        required=True,
+        min_value=1,
+        required=False,
     )
 
     @classmethod
     def from_ini(cls, ini):
+        limit = field_from_ini(
+            cls.limit, ini,
+            'MaxLag', 'cheaterWarningNum',
+        )
+        limit = (
+            None
+            if limit == NO_CHEATER_WARNINGS_LIMIT_FLAG
+            else limit
+        )
+
         return cls({
             'delay': field_from_ini(
                 cls.delay, ini,
                 'MaxLag', 'cheaterWarningDelay',
             ),
-            'max_number': field_from_ini(
-                cls.max_number, ini,
-                'MaxLag', 'cheaterWarningNum',
-            ),
+            'limit': limit,
         })
 
     @classmethod
