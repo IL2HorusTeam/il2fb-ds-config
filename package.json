@@ -6,7 +6,9 @@
     "il2",
     "il-2",
     "fb",
+    "sturmovik",
     "forgotten battles",
+    "dedicated",
     "server",
     "config"
   ],
@@ -26,6 +28,10 @@
     "react": "~15.4.1",
     "react-dom": "~15.4.1",
     "react-fa": "4.2.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "superagent": "~3.3.1",
     "typeface-oxygen": "0.0.22",
     "typeface-roboto": "0.0.22"
