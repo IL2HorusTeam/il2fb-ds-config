@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { Button } from 'antd';
+import FileSaver from 'file-saver';
+
+import { exportConfig } from '../../actions';
 
 
-export default class Export extends Component {
+class Export extends Component {
 
   render() {
     return (
@@ -15,10 +19,33 @@ export default class Export extends Component {
           icon="download"
           size="large"
           style={{ width: '250px', height: '50px', }}
-        >Download «confs.ini»</Button>
+          onClick={() => {this.props.onExportClick(this.props.data)}}
+        >Export configuration file</Button>
         </div>
       </div>
     );
   }
 
 }
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    data: state.config.data,
+  }
+}
+
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onExportClick: (data) => {
+      dispatch(exportConfig(data));
+    },
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Export)

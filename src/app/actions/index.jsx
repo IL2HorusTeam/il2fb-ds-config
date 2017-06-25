@@ -2,6 +2,7 @@ import request from "superagent";
 import urljoin from "url-join";
 
 import { message, } from 'antd';
+import FileSaver from 'file-saver';
 
 
 export const DEFAULTS_REQUEST = 'DEFAULTS_REQUEST';
@@ -86,12 +87,12 @@ function failParseFile(errorInfo) {
 }
 
 
-export function parseFile(file) {
+export function importConfig(file) {
   return function (dispatch) {
     dispatch(requestParseFile(file));
 
     request
-    .post(urljoin(process.env.API_BASE_URL, 'parse', 'file'))
+    .post(urljoin(process.env.API_BASE_URL, 'file', 'parse'))
     .attach("file", file)
     .end((error, response) => {
       if (!response) {
@@ -108,6 +109,69 @@ export function parseFile(file) {
       } else {
         message.success('Configuration file was successfully imported');
         dispatch(receiveParseFile(response.body.data));
+      }
+    });
+  }
+}
+
+
+export const COMPOSE_FILE_REQUEST = 'COMPOSE_FILE_REQUEST';
+export const COMPOSE_FILE_SUCCESS = 'COMPOSE_FILE_SUCCESS';
+export const COMPOSE_FILE_FAILURE = 'COMPOSE_FILE_FAILURE';
+
+
+function requestComposeFile(data) {
+  return {
+    type: COMPOSE_FILE_REQUEST,
+    data: data,
+  };
+}
+
+
+function receiveComposeFile(data) {
+  return {
+    type: COMPOSE_FILE_SUCCESS,
+    data: data,
+  };
+}
+
+
+function failComposeFile(errorInfo) {
+  return {
+    type: COMPOSE_FILE_FAILURE,
+    errorInfo: errorInfo,
+  };
+}
+
+
+export function exportConfig(data) {
+  return function (dispatch) {
+    dispatch(requestComposeFile(data));
+
+    request
+    .post(urljoin(process.env.API_BASE_URL, 'file', 'compose'))
+    .send(data)
+    .end((error, response) => {
+      if (!response) {
+        let detail = error.message;
+        message.error(`Failed to export file: ${detail}`, 5);
+        dispatch(failComposeFile({ detail: detail }));
+      } else if (!response.body) {
+        let detail = response.statusText;
+        message.error(`Failed to export file: ${detail}`, 5);
+        dispatch(failComposeFile({ detail: detail }));
+      } else if (!response.ok) {
+        message.error(response.body.detail, 5);
+        dispatch(failComposeFile(response.body));
+      } else {
+        message.success('Configuration file was successfully exported');
+
+        let data = response.body.data
+          , blob = new Blob([data], {type: "text/plain;charset=utf-8"});
+
+        FileSaver.saveAs(blob, "confs.ini");
+
+        dispatch(receiveComposeFile(data));
       }
     });
   }

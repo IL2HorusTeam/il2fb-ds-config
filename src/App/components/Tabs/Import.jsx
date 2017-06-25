@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import { Icon } from 'react-fa';
 
-import { parseFile } from '../../actions';
+import { importConfig } from '../../actions';
 
 
 class Import extends Component {
@@ -47,7 +47,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onFileDrop: (fileArray) => {
-      dispatch(parseFile(fileArray[0]));
+      dispatch(importConfig(fileArray[0]));
       return false;
     },
   }
