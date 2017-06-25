@@ -61,10 +61,15 @@ import {
 } from '../actions';
 
 
-function activeTab(state='about', action) {
+const DEFAULT_ACTIVE_TAB = 'about';
+
+
+function activeTab(state=DEFAULT_ACTIVE_TAB, action) {
   switch (action.type) {
     case SELECT_TAB:
       return action.tabName;
+    case PARSE_FILE_SUCCESS:
+      return DEFAULT_ACTIVE_TAB;
     default:
       return state;
   }
@@ -688,11 +693,12 @@ function config(state = {
         isFetching: true,
       })
     case PARSE_FILE_SUCCESS:
-      return Object.assign({}, state, {
+      state = Object.assign({}, state, {
         isFetching: false,
         errorInfo: null,
         data: action.data,
       })
+      break;
     case PARSE_FILE_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
