@@ -3,8 +3,6 @@ IL-2 FB DS Config
 
 |pypi_package| |pypi_downloads| |python_versions| |license|
 
-|unix_build| |windows_build| |coverage_status|
-
 |code_issues| |codeclimate| |codacy| |quality| |health| |requirements|
 
 Python library for working with settings of IL-2 FB Dedicated Server
@@ -592,19 +590,6 @@ cheaterWarningNum
    :Default: ``3``
    :Example: ``cheaterWarningNum=3``
 
-
-
-.. |unix_build| image:: http://img.shields.io/travis/IL2HorusTeam/il2fb-ds-config.svg?style=flat&branch=master
-   :target: https://travis-ci.org/IL2HorusTeam/il2fb-ds-config
-   :alt: Build status of the master branch on Linux
-
-.. |windows_build|  image:: https://ci.appveyor.com/api/projects/status/1nub4lcihi3e0968/branch/master?svg=true
-   :target: https://ci.appveyor.com/project/oblalex/il2fb-ds-config
-   :alt: Build status of the master branch on Windows
-
-.. |coverage_status| image:: https://codecov.io/github/IL2HorusTeam/il2fb-ds-config/coverage.svg?branch=master
-   :target: https://codecov.io/github/IL2HorusTeam/il2fb-ds-config?branch=master
-   :alt: Test coverage
 
 .. |codeclimate| image:: https://codeclimate.com/github/IL2HorusTeam/il2fb-ds-config/badges/gpa.svg
    :target: https://codeclimate.com/github/IL2HorusTeam/il2fb-ds-config
