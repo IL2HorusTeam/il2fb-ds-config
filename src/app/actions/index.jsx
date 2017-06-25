@@ -106,7 +106,7 @@ export function parseFile(file) {
         message.error(response.body.detail, 5);
         dispatch(failParseFile(response.body));
       } else {
-        message.success('Configuration file was successfully imported!');
+        message.success('Configuration file was successfully imported');
         dispatch(receiveParseFile(response.body.data));
       }
     });
