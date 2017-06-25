@@ -1,7 +1,10 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 import {
   DEFAULTS_REQUEST, DEFAULTS_SUCCESS, DEFAULTS_FAILURE,
+
+  PARSE_FILE_REQUEST, PARSE_FILE_SUCCESS, PARSE_FILE_FAILURE,
+
   SELECT_TAB,
 
   SET_SERVER_NAME, SET_SERVER_DESCRIPTION,
@@ -679,6 +682,23 @@ function config(state = {
         data: {},
         errorInfo: action.errorInfo,
       })
+
+    case PARSE_FILE_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+      })
+    case PARSE_FILE_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        errorInfo: null,
+        data: action.data,
+      })
+    case PARSE_FILE_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        errorInfo: action.errorInfo,
+      })
+
     case TOGGLE_CONSOLE_CONNECTION_PORT:
       state = Object.assign({}, state, {
         isEditingConsoleConnectionAllowedHosts: (
@@ -691,6 +711,7 @@ function config(state = {
       return Object.assign({}, state, {
         isEditingConsoleConnectionAllowedHosts: true,
       })
+
     case TOGGLE_DEVICE_LINK_CONNECTION_PORT:
       state = Object.assign({}, state, {
         isEditingDeviceLinkConnectionAllowedHosts: (

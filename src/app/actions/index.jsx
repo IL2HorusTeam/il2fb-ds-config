@@ -1,6 +1,9 @@
 import request from "superagent";
 import urljoin from "url-join";
 
+import { message, } from 'antd';
+
+
 export const DEFAULTS_REQUEST = 'DEFAULTS_REQUEST';
 export const DEFAULTS_SUCCESS = 'DEFAULTS_SUCCESS';
 export const DEFAULTS_FAILURE = 'DEFAULTS_FAILURE';
@@ -48,6 +51,63 @@ export function getDefaults() {
         dispatch(failDefaults(response.body));
       } else {
         dispatch(receiveDefaults(response.body.data));
+      }
+    });
+  }
+}
+
+
+export const PARSE_FILE_REQUEST = 'PARSE_FILE_REQUEST';
+export const PARSE_FILE_SUCCESS = 'PARSE_FILE_SUCCESS';
+export const PARSE_FILE_FAILURE = 'PARSE_FILE_FAILURE';
+
+
+function requestParseFile(file) {
+  return {
+    type: PARSE_FILE_REQUEST,
+    file: file,
+  };
+}
+
+
+function receiveParseFile(data) {
+  return {
+    type: PARSE_FILE_SUCCESS,
+    data: data,
+  };
+}
+
+
+function failParseFile(errorInfo) {
+  return {
+    type: PARSE_FILE_FAILURE,
+    errorInfo: errorInfo,
+  };
+}
+
+
+export function parseFile(file) {
+  return function (dispatch) {
+    dispatch(requestParseFile(file));
+
+    request
+    .post(urljoin(process.env.API_BASE_URL, 'parse', 'file'))
+    .attach("file", file)
+    .end((error, response) => {
+      if (!response) {
+        let detail = error.message;
+        message.error(`Failed to import file: ${detail}`, 5);
+        dispatch(failParseFile({ detail: detail }));
+      } else if (!response.body) {
+        let detail = response.statusText;
+        message.error(`Failed to import file: ${detail}`, 5);
+        dispatch(failParseFile({ detail: detail }));
+      } else if (!response.ok) {
+        message.error(response.body.detail, 5);
+        dispatch(failParseFile(response.body));
+      } else {
+        message.success('Configuration file was successfully imported!');
+        dispatch(receiveParseFile(response.body.data));
       }
     });
   }

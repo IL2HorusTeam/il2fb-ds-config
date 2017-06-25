@@ -1,37 +1,60 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import { Upload, Icon, message } from 'antd';
+import Dropzone from 'react-dropzone';
+import { Icon } from 'react-fa';
 
-const Dragger = Upload.Dragger;
-
-
-const props = {
-  name: 'file',
-  multiple: false,
-  showUploadList: false,
-  // action: '//jsonplaceholder.typicode.com/posts/',
-  // onChange(info) {
-  // },
-};
+import { parseFile } from '../../actions';
 
 
-export default class Import extends Component {
+class Import extends Component {
 
   render() {
     return (
       <div className="tab-pane">
         <h1>Import configuration file</h1>
         <div style={{ marginTop: 16, height: 180 }}>
-          <Dragger {...props}>
-            <p className="ant-upload-drag-icon">
-              <Icon type="upload" />
+          <Dropzone
+            onDrop={this.props.onFileDrop}
+            className="dropzone"
+            multiple={false}
+          >
+            <Icon
+              name="upload"
+              size="5x"
+              className="dropzone-icon"
+            />
+            <p>
+              Click or drag configuration file to this area to import
             </p>
-            <p className="ant-upload-text">Click or drag configuration file to this area to upload</p>
-            <p className="ant-upload-hint">Configuration file is located in the root of server's directory and named «confs.ini»</p>
-          </Dragger>
+          </Dropzone>
         </div>
       </div>
     );
   }
 
 }
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    name: state.config.data.about.name,
+    description: state.config.data.about.description,
+  }
+}
+
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onFileDrop: (fileArray) => {
+      dispatch(parseFile(fileArray[0]));
+      return false;
+    },
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Import)
