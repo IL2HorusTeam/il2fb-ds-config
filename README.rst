@@ -623,7 +623,7 @@ cheaterWarningNum
    :target: https://crate.io/packages/il2fb-ds-config/
    :alt: Number of downloads of PyPI package
 
-.. |python_versions| image:: https://img.shields.io/badge/Python-2.7,3.4,3.5-brightgreen.svg?style=flat
+.. |python_versions| image:: https://img.shields.io/badge/Python-2.7,3.4,3.5,3.6-brightgreen.svg?style=flat
    :alt: Supported versions of Python
 
 .. |license| image:: https://img.shields.io/badge/license-LGPLv3-blue.svg?style=flat
