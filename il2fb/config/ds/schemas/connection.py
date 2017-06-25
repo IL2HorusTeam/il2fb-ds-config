@@ -7,7 +7,7 @@ from schematics.types import StringType, IntType
 from schematics.types.compound import ModelType
 
 from .interfaces import INISerializable, DefaultProvider
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -52,6 +52,12 @@ class Proxy(Model):
                 'NET', 'socksPwd',
             ),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(self.host, ini, 'NET', 'socksHost')
+        field_to_ini(self.port, ini, 'NET', 'socksPort')
+        field_to_ini(self.user, ini, 'NET', 'socksUser')
+        field_to_ini(self.password, ini, 'NET', 'socksPwd')
 
     @classmethod
     def default(cls):
@@ -112,6 +118,13 @@ class Connection(Model):
             ),
             'proxy': Proxy.from_ini(ini),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(self.host, ini, 'NET', 'localHost')
+        field_to_ini(self.port, ini, 'NET', 'localPort')
+        field_to_ini(self.max_clients, ini, 'NET', 'serverChannels')
+        field_to_ini(self.bandwidth, ini, 'NET', 'speed')
+        self.proxy.to_ini(ini)
 
     @classmethod
     def default(cls):

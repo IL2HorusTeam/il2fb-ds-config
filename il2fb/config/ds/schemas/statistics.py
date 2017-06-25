@@ -7,7 +7,7 @@ from schematics.types import BooleanType
 from schematics.types.compound import ModelType
 
 from .interfaces import INISerializable, DefaultProvider
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -75,6 +75,15 @@ class Users(Model):
             ),
         })
 
+    def to_ini(self, ini):
+        field_to_ini(self.show_tail_number, ini, 'NET', 'showPilotNumber')
+        field_to_ini(self.show_ping, ini, 'NET', 'showPilotPing')
+        field_to_ini(self.show_callsign, ini, 'NET', 'showPilotName')
+        field_to_ini(self.show_belligerent, ini, 'NET', 'showPilotArmy')
+        field_to_ini(self.show_aircraft_designation, ini, 'NET', 'showPilotACDesignation')
+        field_to_ini(self.show_aircraft_type, ini, 'NET', 'showPilotACType')
+        field_to_ini(self.show_score, ini, 'NET', 'showPilotScore')
+
     @classmethod
     def default(cls):
         return cls({
@@ -107,6 +116,10 @@ class Belligerents(Model):
                 'NET', 'cumulativeTeamScore',
             ),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(self.show_score, ini, 'NET', 'showTeamScore')
+        field_to_ini(self.accumulate_score, ini, 'NET', 'cumulativeTeamScore')
 
     @classmethod
     def default(cls):
@@ -143,6 +156,11 @@ class Statistics(Model):
             'users': Users.from_ini(ini),
             'belligerents': Belligerents.from_ini(ini),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(not self.enabled, ini, 'NET', 'disableNetStatStatistics')
+        self.users.to_ini(ini)
+        self.belligerents.to_ini(ini)
 
     @classmethod
     def default(cls):

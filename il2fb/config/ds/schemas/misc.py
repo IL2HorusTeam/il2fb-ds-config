@@ -6,7 +6,7 @@ from schematics.models import Model
 from schematics.types import BooleanType, IntType
 
 from .interfaces import INISerializable, DefaultProvider
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -74,6 +74,15 @@ class Miscellaneous(Model):
                 'game', 'TypeClouds',
             ),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(self.difficulty, ini, 'NET', 'difficulty')
+        field_to_ini(self.display_custom_skins, ini, 'NET', 'SkinDownload')
+        field_to_ini(self.allow_custom_sounds, ini, 'NET', 'allowCustomSounds')
+        field_to_ini(self.filter_user_names, ini, 'NET', 'filterUserNames')
+        field_to_ini(self.display_small_way_point_labels, ini, 'game', 'SmallMapWPLabels')
+        field_to_ini(self.skip_paratrooper_views, ini, 'game', 'SkipParatrooperViews')
+        field_to_ini(self.use_new_clouds_rendering, ini, 'game', 'TypeClouds')
 
     @classmethod
     def default(cls):

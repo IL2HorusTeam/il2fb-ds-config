@@ -7,7 +7,7 @@ from schematics.types import StringType, IntType, BooleanType
 from schematics.types.compound import ModelType
 
 from .interfaces import INISerializable, DefaultProvider
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -44,6 +44,11 @@ class Logging(Model):
             ),
         })
 
+    def to_ini(self, ini):
+        field_to_ini(self.file_name, ini, 'game', 'eventlog')
+        field_to_ini(self.keep_file, ini, 'game', 'eventlogkeep')
+        field_to_ini(self.log_buildings, ini, 'game', 'eventlogHouse')
+
     @classmethod
     def default(cls):
         return cls({
@@ -75,6 +80,10 @@ class Events(Model):
             ),
             'logging': Logging.from_ini(ini),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(self.chat_level, ini, 'chat', 'autoLogDetail')
+        self.logging.to_ini(ini)
 
     @classmethod
     def default(cls):

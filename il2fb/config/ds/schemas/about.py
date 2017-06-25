@@ -6,7 +6,7 @@ from schematics.models import Model
 from schematics.types import StringType
 
 from .interfaces import INISerializable, DefaultProvider
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -33,6 +33,10 @@ class About(Model):
                 'NET', 'serverDescription',
             ),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(self.name, ini, 'NET', 'serverName')
+        field_to_ini(self.description, ini, 'NET', 'serverDescription')
 
     @classmethod
     def default(cls):

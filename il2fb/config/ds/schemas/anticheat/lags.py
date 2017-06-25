@@ -8,7 +8,7 @@ from schematics.types import IntType, FloatType
 from schematics.types.compound import ModelType
 
 from ..constants import NO_CHEATER_WARNINGS_LIMIT_FLAG
-from ..helpers import field_from_ini
+from ..helpers import field_from_ini, field_to_ini
 from ..interfaces import INISerializable, DefaultProvider
 
 
@@ -51,6 +51,10 @@ class MaxTime(Model):
                 'MaxLag', 'farMaxLagTime',
             ),
         })
+
+    def to_ini(self, ini):
+        field_to_ini(self.near, ini, 'MaxLag', 'nearMaxLagTime')
+        field_to_ini(self.far, ini, 'MaxLag', 'farMaxLagTime')
 
     @classmethod
     def default(cls):
@@ -95,6 +99,15 @@ class Warnings(Model):
             'limit': limit,
         })
 
+    def to_ini(self, ini):
+        limit = (
+            NO_CHEATER_WARNINGS_LIMIT_FLAG
+            if self.limit is None
+            else self.limit
+        )
+        field_to_ini(limit, ini, 'MaxLag', 'cheaterWarningNum')
+        field_to_ini(self.delay, ini, 'MaxLag', 'cheaterWarningDelay')
+
     @classmethod
     def default(cls):
         return cls({
@@ -121,6 +134,10 @@ class Lags(Model):
             'max_time': MaxTime.from_ini(ini),
             'warnings': Warnings.from_ini(ini),
         })
+
+    def to_ini(self, ini):
+        for field_name in self.iter():
+            self[field_name].to_ini(ini)
 
     @classmethod
     def default(cls):

@@ -8,7 +8,7 @@ from schematics.types.compound import ListType, ModelType
 
 from .constants import FORBID_CONSOLE_CONNECTIONS_FLAG
 from .interfaces import INISerializable, DefaultProvider
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -49,6 +49,17 @@ class Connection(Model):
                 .split()
             ),
         })
+
+    def to_ini(self, ini):
+        port = (
+            FORBID_CONSOLE_CONNECTIONS_FLAG
+            if self.port is None
+            else self.port
+        )
+        allowed_hosts = ' '.join(self.allowed_hosts)
+
+        field_to_ini(port, ini, 'Console', 'IP')
+        field_to_ini(allowed_hosts, ini, 'Console', 'IPS')
 
     @classmethod
     def default(cls):
@@ -100,6 +111,12 @@ class Logging(Model):
             ),
         })
 
+    def to_ini(self, ini):
+        field_to_ini(self.enabled, ini, 'Console', 'LOG')
+        field_to_ini(self.file_name, ini, 'Console', 'LOGFILE')
+        field_to_ini(self.log_time, ini, 'Console', 'LOGTIME')
+        field_to_ini(self.keep_file, ini, 'Console', 'LOGKEEP')
+
     @classmethod
     def default(cls):
         return cls({
@@ -137,6 +154,10 @@ class History(Model):
             ),
         })
 
+    def to_ini(self, ini):
+        field_to_ini(self.max_commands, ini, 'Console', 'HISTORYCMD')
+        field_to_ini(self.max_records, ini, 'Console', 'HISTORY')
+
     @classmethod
     def default(cls):
         return cls({
@@ -168,6 +189,10 @@ class Console(Model):
             'logging': Logging.from_ini(ini),
             'history': History.from_ini(ini),
         })
+
+    def to_ini(self, ini):
+        for field_name in self.iter():
+            self[field_name].to_ini(ini)
 
     @classmethod
     def default(cls):

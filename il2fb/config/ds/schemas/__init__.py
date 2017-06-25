@@ -74,6 +74,10 @@ class ServerConfig(Model):
             for field_name, model_type in cls.fields.items()
         })
 
+    def to_ini(self, ini):
+        for field_name in self.iter():
+            self[field_name].to_ini(ini)
+
     @classmethod
     def default(cls):
         return cls({

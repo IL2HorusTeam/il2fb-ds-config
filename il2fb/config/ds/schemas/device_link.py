@@ -8,7 +8,7 @@ from schematics.types.compound import ListType, ModelType
 
 from .constants import FORBID_DEVICE_LINK_CONNECTIONS_FLAG
 from .interfaces import INISerializable, DefaultProvider
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 
 
 @zope.interface.implementer(INISerializable)
@@ -58,6 +58,18 @@ class Connection(Model):
             ),
         })
 
+    def to_ini(self, ini):
+        port = (
+            FORBID_DEVICE_LINK_CONNECTIONS_FLAG
+            if self.port is None
+            else self.port
+        )
+        allowed_hosts = ' '.join(self.allowed_hosts)
+
+        field_to_ini(port, ini, 'DeviceLink', 'port')
+        field_to_ini(self.host, ini, 'DeviceLink', 'host')
+        field_to_ini(allowed_hosts, ini, 'DeviceLink', 'IPS')
+
     @classmethod
     def default(cls):
         return cls({
@@ -80,6 +92,10 @@ class DeviceLink(Model):
         return cls({
             'connection': Connection.from_ini(ini),
         })
+
+    def to_ini(self, ini):
+        for field_name in self.iter():
+            self[field_name].to_ini(ini)
 
     @classmethod
     def default(cls):

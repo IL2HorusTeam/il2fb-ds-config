@@ -6,7 +6,7 @@ from schematics.models import Model
 from schematics.types import BooleanType, IntType, FloatType
 
 from .constants import NO_DEATH_LIMIT_FLAG
-from .helpers import field_from_ini
+from .helpers import field_from_ini, field_to_ini
 from .interfaces import INISerializable, DefaultProvider
 
 
@@ -61,6 +61,18 @@ class Refly(Model):
             ),
             'death_limit': death_limit,
         })
+
+    def to_ini(self, ini):
+        death_limit = (
+            NO_DEATH_LIMIT_FLAG
+            if self.death_limit is None
+            else self.death_limit
+        )
+
+        field_to_ini(not self.enabled, ini, 'NET', 'reflyDisabled')
+        field_to_ini(self.death_penalty, ini, 'NET', 'reflyKIADelay')
+        field_to_ini(self.death_penalty_multiplier, ini, 'NET', 'reflyKIADelayMultiplier')
+        field_to_ini(death_limit, ini, 'NET', 'maxAllowedKIA')
 
     @classmethod
     def default(cls):

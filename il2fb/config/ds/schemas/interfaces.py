@@ -11,6 +11,12 @@ class INISerializable(zope.interface.Interface):
 
         """
 
+    def to_ini(ini):
+        """
+        Update INI config from current object.
+
+        """
+
 
 class DefaultProvider(zope.interface.Interface):
 
