@@ -172,7 +172,16 @@ class TabsWithData extends Component {
 
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+
+const mapStateToPropsTabsWithData = (state, ownProps) => {
+  return {
+    activeTab: state.activeTab,
+    data: state.config.data,
+  }
+}
+
+
+const mapDispatchToPropsTabsWithData = (dispatch, ownProps) => {
   return {
     onTabSelected: (e) => {
       dispatch(selectTab(e.key))
@@ -181,22 +190,28 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const TabsWithDataContainer = connect(
-  (dispatch, ownProps) => {return {}},
-  mapDispatchToProps
+  mapStateToPropsTabsWithData,
+  mapDispatchToPropsTabsWithData,
 )(TabsWithData)
 
 
-export default class Tabs extends Component {
+class Tabs extends Component {
 
   render() {
     return (
       this.props.isFetching
       ? <TabsFetching />
-      : <TabsWithDataContainer
-          activeTab={this.props.activeTab}
-          data={this.props.data}
-        />
+      : <TabsWithDataContainer />
     );
   }
 
 }
+
+const mapStateToPropsTabs = (state, ownProps) => {
+  return {
+    isFetching: state.config.isFetching,
+  }
+}
+
+
+export default connect(mapStateToPropsTabs)(Tabs)
