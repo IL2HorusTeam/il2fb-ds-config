@@ -49,6 +49,7 @@ class Refly(Model):
             'enabled': not field_from_ini(
                 cls.enabled, ini,
                 'NET', 'reflyDisabled',
+                False,
             ),
             'death_penalty': field_from_ini(
                 cls.death_penalty, ini,

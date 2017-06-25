@@ -138,6 +138,7 @@ class Statistics(Model):
             'enabled': not field_from_ini(
                 cls.enabled, ini,
                 'NET', 'disableNetStatStatistics',
+                False,
             ),
             'users': Users.from_ini(ini),
             'belligerents': Belligerents.from_ini(ini),

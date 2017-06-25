@@ -31,10 +31,12 @@ class HUD(Model):
             'show_mission_info': not field_from_ini(
                 cls.show_mission_info, ini,
                 'game', 'NoMissionInfoHud',
+                False,
             ),
             'show_kill_info': not field_from_ini(
                 cls.show_kill_info, ini,
                 'game', 'noKillInfoHud',
+                False,
             ),
             'show_at_bottom': field_from_ini(
                 cls.show_at_bottom, ini,
