@@ -676,7 +676,7 @@ function config(state = {
     case DEFAULTS_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        data: null,
+        data: {},
         errorInfo: action.errorInfo,
       })
     case TOGGLE_CONSOLE_CONNECTION_PORT:

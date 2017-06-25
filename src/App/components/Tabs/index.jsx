@@ -57,6 +57,29 @@ class TabsFetching extends Component {
 }
 
 
+class TabsServiceUnavailable extends Component {
+
+  render() {
+    return (
+      <Card
+        title="Service is not available"
+        className="content-inside no-border"
+        bordered={false}
+        bodyStyle={{ padding: '12px 24px', }}
+      >
+        <p>
+          Sorry, the service is not available currenly.
+        </p>
+        <p>
+          Please, try again later.
+        </p>
+      </Card>
+    );
+  }
+
+}
+
+
 class TabsWithData extends Component {
 
   static defaultProps = {
@@ -189,6 +212,7 @@ const mapDispatchToPropsTabsWithData = (dispatch, ownProps) => {
   }
 }
 
+
 const TabsWithDataContainer = connect(
   mapStateToPropsTabsWithData,
   mapDispatchToPropsTabsWithData,
@@ -201,15 +225,19 @@ class Tabs extends Component {
     return (
       this.props.isFetching
       ? <TabsFetching />
-      : <TabsWithDataContainer />
+      : this.props.isAvailable
+        ? <TabsWithDataContainer />
+        : <TabsServiceUnavailable />
     );
   }
 
 }
 
+
 const mapStateToPropsTabs = (state, ownProps) => {
   return {
     isFetching: state.config.isFetching,
+    isAvailable: Object.keys(state.config.data).length !== 0,
   }
 }
 
