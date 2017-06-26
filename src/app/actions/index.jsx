@@ -827,3 +827,5 @@ export function setMiscUseNewCloudsRendering(value) {
   }
 }
 
+export const LANGUAGE = 'LANGUAGE';
+
