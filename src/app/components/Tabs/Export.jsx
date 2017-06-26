@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Button } from 'antd';
-import FileSaver from 'file-saver';
 
 import { exportConfig } from '../../actions';
 
