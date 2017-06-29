@@ -67,6 +67,9 @@ export default class Footer extends Component {
   }
 
   render() {
+
+    const { tr } = this.props;
+
     return (
       <footer>
         <div className="footer-inside">
@@ -76,12 +79,12 @@ export default class Footer extends Component {
             trigger="click"
             overlayClassName="footer-about"
           >
-            <Button><Icon name="info" size="lg" />About</Button>
+            <Button><Icon name="info" size="lg" />{ tr.about }</Button>
           </Popover>
 
-          <Button onClick={this.onDocsClick}><Icon name="book" size="lg" />Docs</Button>
-          <Button onClick={this.onSourcesClick}><Icon name="code" size="lg" />Source</Button>
-          <Button onClick={this.onIssuesClick}><Icon name="bug" size="lg" />Issues</Button>
+          <Button onClick={this.onDocsClick}><Icon name="book" size="lg" />{ tr.docs }</Button>
+          <Button onClick={this.onSourcesClick}><Icon name="code" size="lg" />{ tr.source }</Button>
+          <Button onClick={this.onIssuesClick}><Icon name="bug" size="lg" />{ tr.issues }</Button>
         </div>
       </footer>
     );

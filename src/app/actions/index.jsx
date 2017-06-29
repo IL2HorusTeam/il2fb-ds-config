@@ -827,5 +827,28 @@ export function setMiscUseNewCloudsRendering(value) {
   }
 }
 
-export const LANGUAGE = 'LANGUAGE';
+export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 
+function requireTranslation(language){
+  return require('../locales/'+ language + '.js');
+}
+
+export function choiceLanguage(language) {
+  localStorage.setItem('language', language);
+  let translation = requireTranslation(language);
+  return {
+    type: CHANGE_LANGUAGE,
+    payload: {
+      language: language,
+      translation: translation
+    }
+  }
+}
+
+export function getLanguage() {
+  let language = localStorage.getItem('language') || 'en';
+  localStorage.setItem('language', language);
+  return dispatch => {
+    dispatch(choiceLanguage(language));
+  }
+}

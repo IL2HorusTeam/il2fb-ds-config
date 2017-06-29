@@ -57,7 +57,7 @@ import {
   SET_MISC_DIFFICULTY, SET_MISC_DISPLAY_CUSTOM_SKINS,
   SET_MISC_ALLOW_CUSTOM_SOUNDS, SET_MISC_FILTER_USER_NAMES,
   SET_MISC_DISPLAY_SMALL_WAY_POINT_LABELS, SET_MISC_SKIP_PARATROOPER_VIEWS,
-  SET_MISC_USE_NEW_CLOUDS_RENDERING,
+  SET_MISC_USE_NEW_CLOUDS_RENDERING, CHANGE_LANGUAGE
 } from '../actions';
 
 
@@ -741,10 +741,24 @@ function config(state = {
   };
 }
 
+function locales (state = {language: '', translation: {}}, action) {
+  switch (action.type) {
+    case CHANGE_LANGUAGE:
+      return {
+        ...state,
+        language: action.payload.language,
+        translation: action.payload.translation
+      }
+    default :
+      return state;
+  }
+}
+
 
 const rootReducer = combineReducers({
   activeTab,
   config,
+  locales
 })
 
 export default rootReducer;
