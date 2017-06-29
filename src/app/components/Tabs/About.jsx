@@ -20,27 +20,29 @@ class About extends Component {
       },
     };
 
+    const { tr } = this.props;
+
     return (
       <div className="tab-pane">
-        <h1>About server</h1>
+        <h1>{ tr.about_server }</h1>
         <Form layout="horizontal">
           <FormItem
-            label={<Tooltip title="NET.serverName">Name</Tooltip>}
+            label={<Tooltip title="NET.serverName">{ tr.name }</Tooltip>}
             {...formItemLayout}
           >
             <Input
-              placeholder="Example server"
+              placeholder={ tr.example_server }
               value={this.props.name}
               onChange={this.props.onNameChange}
             />
           </FormItem>
 
           <FormItem
-            label={<Tooltip title="NET.serverDescription">Description</Tooltip>}
+            label={<Tooltip title="NET.serverDescription">{ tr.description }</Tooltip>}
             {...formItemLayout}
           >
             <Input
-              placeholder="Example server description"
+              placeholder={ tr.example_server_description }
               value={this.props.description}
               onChange={this.props.onDescriptionChange}
             />
@@ -57,6 +59,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     name: state.config.data.about.name,
     description: state.config.data.about.description,
+    tr: state.locales.translation
   }
 }
 
