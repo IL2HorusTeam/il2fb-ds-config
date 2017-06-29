@@ -88,7 +88,7 @@ class TabsWithData extends Component {
 
   render() {
     let Pane = tabsToComponentsMap[this.props.activeTab];
-    const { tr } = this.props;
+
     return (
       <Card className="content-inside">
         <Layout className="content-inside-layout" style={{ background: '#fff' }}>
@@ -100,85 +100,85 @@ class TabsWithData extends Component {
               style={{ height: '100%' }}
               onClick={this.props.onTabSelected}
             >
-              <SubMenu key="edit" title={<span><Icon name="pencil-square-o" size="lg" className="nav-icon" />{ tr.edit }</span>}>
+              <SubMenu key="edit" title={<span><Icon name="pencil-square-o" size="lg" className="nav-icon" />Edit</span>}>
                 <Menu.Item key="about">
                   <span>
                     <Icon name="info-circle" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.about }</span>
+                    <span className="nav-text">About</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="anticheat">
                   <span>
                     <Icon name="user-secret" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.anticheat }</span>
+                    <span className="nav-text">Anticheat</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="connection">
                   <span>
                     <Icon name="plug" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.connection }</span>
+                    <span className="nav-text">Connection</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="console">
                   <span>
                     <Icon name="terminal" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.console }</span>
+                    <span className="nav-text">Console</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="deviceLink">
                   <span>
                     <Icon name="link" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.device_link }</span>
+                    <span className="nav-text">Device Link</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="events">
                   <span>
                     <Icon name="bolt" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.events }</span>
+                    <span className="nav-text">Events</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="hud">
                   <span>
                     <Icon name="dashboard" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.hud }</span>
+                    <span className="nav-text">HUD</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="morse">
                   <span>
                     <Icon name="tty" size="lg" className="nav-icon" />
-                    <span className="nav-text"> {tr.morse }</span>
+                    <span className="nav-text">Morse</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="refly">
                   <span>
                     <Icon name="repeat" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.refly }</span>
+                    <span className="nav-text">Refly</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="statistics">
                   <span>
                     <Icon name="pie-chart" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.statistics }</span>
+                    <span className="nav-text">Statistics</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="misc">
                   <span>
                     <Icon name="cube" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.miscellaneous }</span>
+                    <span className="nav-text">Miscellaneous</span>
                   </span>
                 </Menu.Item>
               </SubMenu>
-              <SubMenu key="fileIO" title={<span><Icon name="file-text-o" size="lg" className="nav-icon" />{ tr.file }</span>}>
+              <SubMenu key="fileIO" title={<span><Icon name="file-text-o" size="lg" className="nav-icon" />File</span>}>
                 <Menu.Item key="import">
                   <span>
                     <Icon name="upload" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.import }</span>
+                    <span className="nav-text">Import</span>
                   </span>
                 </Menu.Item>
                 <Menu.Item key="export">
                   <span>
                     <Icon name="download" size="lg" className="nav-icon" />
-                    <span className="nav-text">{ tr.export }</span>
+                    <span className="nav-text">Export</span>
                   </span>
                 </Menu.Item>
               </SubMenu>
@@ -200,7 +200,6 @@ const mapStateToPropsTabsWithData = (state, ownProps) => {
   return {
     activeTab: state.activeTab,
     data: state.config.data,
-    tr: state.locales.translation
   }
 }
 

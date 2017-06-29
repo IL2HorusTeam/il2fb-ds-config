@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk'
 import rootReducer from '../reducers'
 
 
-const configureStoreProd = (initialState) => {
+configureStoreProd = (initialState) => {
 
     return createStore(
         rootReducer,
