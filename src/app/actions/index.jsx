@@ -167,7 +167,7 @@ export function exportConfig(data) {
         message.success('Configuration file was successfully exported');
 
         let data = response.body.data
-          , blob = new Blob([data], {type: "text/plain;charset=utf-8"});
+          , blob = new Blob([data], {type: "text/plain"});
 
         FileSaver.saveAs(blob, "confs.ini");
 
