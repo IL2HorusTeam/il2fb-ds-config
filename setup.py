@@ -32,7 +32,7 @@ README = open(os.path.join(__here__, 'README.rst')).read()
 
 setup(
     name='il2fb-ds-config',
-    version='1.0.0,
+    version='1.0.0',
     description='Library for working with settings of IL-2 FB Dedicated Server',
     long_description=README,
     keywords=[
