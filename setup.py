@@ -32,7 +32,7 @@ README = open(os.path.join(__here__, 'README.rst')).read()
 
 setup(
     name='il2fb-ds-config',
-    version='1.0.0.dev0',
+    version='1.0.0,
     description='Library for working with settings of IL-2 FB Dedicated Server',
     long_description=README,
     keywords=[
@@ -57,7 +57,7 @@ setup(
     install_requires=REQUIREMENTS,
     dependency_links=DEPENDENCIES,
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
         'Natural Language :: English',
@@ -67,10 +67,5 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries',
-    ],
-    platforms=[
-        'any',
-    ],
-    scripts=[
     ],
 )
