@@ -38,7 +38,7 @@ export function getDefaults() {
     dispatch(requestDefaults())
 
     request
-    .get(urljoin(process.env.API_BASE_URL, 'default'))
+    .get(urljoin(process.env.API_BASE_URL, 'ds-config-default'))
     .end((error, response) => {
       if (!response) {
         dispatch(failDefaults({
@@ -92,7 +92,7 @@ export function importConfig(file) {
     dispatch(requestParseFile(file));
 
     request
-    .post(urljoin(process.env.API_BASE_URL, 'file', 'parse'))
+    .post(urljoin(process.env.API_BASE_URL, 'ds-config-parse'))
     .attach("file", file)
     .end((error, response) => {
       if (!response) {
@@ -149,7 +149,7 @@ export function exportConfig(data) {
     dispatch(requestComposeFile(data));
 
     request
-    .post(urljoin(process.env.API_BASE_URL, 'file', 'compose'))
+    .post(urljoin(process.env.API_BASE_URL, 'ds-config-compose'))
     .send(data)
     .end((error, response) => {
       if (!response) {
@@ -828,4 +828,3 @@ export function setMiscUseNewCloudsRendering(value) {
 }
 
 export const LANGUAGE = 'LANGUAGE';
-

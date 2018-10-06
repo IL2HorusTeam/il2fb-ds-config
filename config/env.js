@@ -25,7 +25,7 @@ function getClientEnvironment(publicUrl) {
       'API_BASE_URL': JSON.stringify(
         process.env.NODE_ENV === 'development'
         ? "http://127.0.0.1:5000"
-        : "https://api.il2.oblalex.space/ds-config"
+        : "https://europe-west1-il2-horus-demo-services.cloudfunctions.net"
       )
     });
   return {'process.env': processEnv};
