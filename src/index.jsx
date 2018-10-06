@@ -4,13 +4,13 @@ import { Provider } from 'react-redux'
 
 require('typeface-roboto')
 
-import configureStore from './app/store/configureStore'
+import configureStore from './App/store/configureStore'
 
 import './reset.css';
 import 'antd/dist/antd.css';
 
-import App from './app';
-import { getDefaults } from './app/actions'
+import App from './App';
+import { getDefaults } from './App/actions'
 import './index.css';
 
 
