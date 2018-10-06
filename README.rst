@@ -3,7 +3,7 @@ IL-2 FB DS Config
 
 |pypi_package| |python_versions| |license|
 
-|code_climate| |codebeat| |codacy| |scrutinizer| |health| |requirements|
+|code_climate| |codebeat| |scrutinizer| |health| |requirements|
 
 Python library for working with settings of IL-2 FB Dedicated Server
 (``confs.ini``).
@@ -609,10 +609,6 @@ cheaterWarningNum
 .. |codebeat| image:: https://codebeat.co/badges/0a0185bd-e5f2-4391-a834-1cebd28ef224
    :target: https://codebeat.co/projects/github-com-il2horusteam-il2fb-ds-config-master
    :alt: Code quality provided by «Codebeat»
-
-.. |codacy| image:: https://www.codacy.com/project/badge/6691993e3d5241ceb5341ec73c0aff70
-   :target: https://www.codacy.com/app/oblalex/il2fb-ds-config
-   :alt: Codacy Code Review
 
 .. |scrutinizer| image:: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/badges/quality-score.png?b=master&style=flat
    :target: https://scrutinizer-ci.com/g/IL2HorusTeam/il2fb-ds-config/?branch=master
